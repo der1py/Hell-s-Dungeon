@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://bi2k67c4wcsmr"]
+
+[ext_resource type="Texture2D" uid="uid://5yhu1hbsepvf" path="res://Assets/Enemies/Slime/slime.png" id="1_ga6gw"]
+[ext_resource type="Script" path="res://slime.gd" id="1_vqrah"]
+[ext_resource type="Texture2D" uid="uid://diqnngm3ku7hu" path="res://Assets/Enemies/Slime/slime_walk.png" id="2_g8m85"]
+[ext_resource type="Texture2D" uid="uid://0wikbtis3ci8" path="res://Assets/Enemies/Slime/slime_dead.png" id="3_k71e1"]
+[ext_resource type="Texture2D" uid="uid://tpa6qrwn6hhi" path="res://Assets/Enemies/Slime/slime_hit.png" id="4_p5y5j"]
+[ext_resource type="Texture2D" uid="uid://df7wd8xysik2y" path="res://Assets/Enemies/Slime/slime_squashed.png" id="6_sq77h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mf88q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ga6gw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_g8m85")
+}],
+"loop": true,
+"name": &"crawl",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_k71e1")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_p5y5j")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_sq77h")
+}],
+"loop": true,
+"name": &"squashed",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o72j3"]
+size = Vector2(40, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbdpi"]
+size = Vector2(48, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6oqi"]
+size = Vector2(32, 8)
+
+[node name="Slime" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 67
+script = ExtResource("1_vqrah")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mf88q")
+animation = &"crawl"
+autoplay = "crawl"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_o72j3")
+
+[node name="HurtZone" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtZone"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_pbdpi")
+
+[node name="TopZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopZone"]
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_x6oqi")
+
+[connection signal="body_entered" from="HurtZone" to="." method="_on_hurt_zone_body_entered"]
+[connection signal="body_entered" from="TopZone" to="." method="_on_top_zone_body_entered"]

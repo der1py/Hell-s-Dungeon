@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxqn2fvf72jxv"]
+
+[ext_resource type="Script" path="res://game_over.gd" id="1_0yhmf"]
+[ext_resource type="FontFile" uid="uid://d0e5jl2vay1kx" path="res://Assets/PTSerif-Regular.ttf" id="1_3xnyy"]
+[ext_resource type="FontFile" uid="uid://clbet8ndwcpgt" path="res://Assets/Silkscreen-Regular.ttf" id="3_p3k3p"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0yhmf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -15.0
+offset_top = -10.0
+offset_right = 1172.0
+offset_bottom = 666.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 246.0
+offset_right = 822.0
+offset_bottom = 382.0
+theme_override_colors/font_color = Color(0.494118, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_3xnyy")
+theme_override_font_sizes/font_size = 100
+text = "YOU DIED"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 465.0
+offset_top = 412.0
+offset_right = 718.0
+offset_bottom = 466.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(0.662745, 1, 0.635294, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_p3k3p")
+theme_override_font_sizes/font_size = 35
+text = "Try Again?"
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

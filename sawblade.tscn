@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://s5vpth3twyog"]
+
+[ext_resource type="Script" path="res://sawblade.gd" id="1_0h128"]
+[ext_resource type="Texture2D" uid="uid://fyhygf30qm2j" path="res://Assets/Enemies/Sawblade/sawHalf.png" id="1_l6u74"]
+[ext_resource type="Texture2D" uid="uid://dhochgjn4auqm" path="res://Assets/Enemies/Sawblade/sawHalf_move.png" id="2_q1r0b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_scftk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l6u74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_q1r0b")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hxtl"]
+size = Vector2(112, 5.5)
+
+[node name="Sawblade" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_0h128")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_scftk")
+animation = &"spin"
+autoplay = "spin"
+frame_progress = 0.53964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 60.75)
+shape = SubResource("RectangleShape2D_7hxtl")
+
+[node name="HurtZone" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtZone"]
+polygon = PackedVector2Array(-57, 64, -52, 39, -34, 17, -11, 8, 17, 8, 40, 20, 52, 40, 57, 55, 57, 64)
+
+[connection signal="body_entered" from="HurtZone" to="." method="_on_hurt_zone_body_entered"]

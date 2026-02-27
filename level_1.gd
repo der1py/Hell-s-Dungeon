@@ -1,0 +1,22 @@
+extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	Global.coins = 0
+	$Knook/Camera2D.limit_bottom = 1650
+	$Knook/Camera2D.limit_right = 15000
+	$Bumper.visible = false
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func _on_reset_camera_limit_factory_body_entered(body):
+	$Knook/Camera2D.limit_bottom = 4000
+
+
+func _on_reset_camera_limit_cave_body_entered(body):
+	$Knook/Camera2D.limit_bottom = 1650
+	$Knook/Camera2D.limit_right = 15000

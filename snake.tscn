@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://csrhoya60rhmd"]
+
+[ext_resource type="Texture2D" uid="uid://i8r1ibf2ydmv" path="res://Assets/Snake/snakeLava.png" id="1_0ikh8"]
+[ext_resource type="Script" path="res://snake.gd" id="1_hn5yy"]
+[ext_resource type="Texture2D" uid="uid://3a6f7ihw5l81" path="res://Assets/Snake/snakeLava_ani.png" id="2_djgch"]
+[ext_resource type="Texture2D" uid="uid://da3hhlftofc53" path="res://Assets/SnakeBigger/snakeLava_bigger.png" id="4_xmvpf"]
+[ext_resource type="Texture2D" uid="uid://c1nma1s04ipwq" path="res://Assets/SnakeBigger/snakeLava_ani_bigger2.png" id="5_dqnfp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d2k7r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0ikh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_djgch")
+}],
+"loop": true,
+"name": &"wiggle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xmvpf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dqnfp")
+}],
+"loop": true,
+"name": &"wiggle bigger",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qul07"]
+size = Vector2(110, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00jp6"]
+size = Vector2(108, 287)
+
+[node name="Snake" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 66
+script = ExtResource("1_hn5yy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d2k7r")
+animation = &"wiggle bigger"
+autoplay = "wiggle bigger"
+frame_progress = 0.685183
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 144.5)
+shape = SubResource("RectangleShape2D_qul07")
+
+[node name="HurtZone" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtZone"]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_00jp6")
+
+[connection signal="body_entered" from="HurtZone" to="." method="_on_hurt_zone_body_entered"]

@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bi4ey55qas0hq"]
+
+[ext_resource type="Script" path="res://Blinky.gd" id="1_36rmu"]
+[ext_resource type="Texture2D" uid="uid://1822e5y3a74b" path="res://Assets/Quiz/coin_gold.png" id="2_txwmt"]
+[ext_resource type="Texture2D" uid="uid://cv2lfr8xhbosk" path="res://Assets/Quiz/coin_silver.png" id="3_cpd8q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ycls2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_txwmt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cpd8q")
+}],
+"loop": true,
+"name": &"Blink",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bttv5"]
+radius = 31.0161
+
+[node name="Quiz Level" type="Node2D"]
+position = Vector2(578, 312)
+
+[node name="Blinky" type="CharacterBody2D" parent="."]
+script = ExtResource("1_36rmu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Blinky"]
+sprite_frames = SubResource("SpriteFrames_ycls2")
+animation = &"Blink"
+autoplay = "Blink"
+frame = 1
+frame_progress = 0.886031
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blinky"]
+shape = SubResource("CircleShape2D_bttv5")
