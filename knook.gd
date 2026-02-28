@@ -18,13 +18,17 @@ func _physics_process(delta):
 		velocity.y = -jumpForce
 	
 	#Left/Right Movement
-	velocity.x = 0
+	var ACCLERATION_CONSTANT = 6
+	velocity.x = max(0, velocity.x - speed * delta * ACCLERATION_CONSTANT) if velocity.x > 0 else min(0, velocity.x + speed * delta * ACCLERATION_CONSTANT)
 	if not Input.is_action_pressed("ui_down"):
-		if Input.is_action_pressed("ui_right"):
+		if Input.is_action_pressed("ui_right") and velocity.x < speed:
 			velocity.x = speed
-		elif Input.is_action_pressed("ui_left"):
+		elif Input.is_action_pressed("ui_left") and velocity.x > -speed:
 			velocity.x = -speed
-		
+	
+	if Input.is_action_just_pressed("dash"):
+		velocity.x *= 10
+	
 	#Play Character Animations and Poses
 	if Input.is_action_pressed("ui_down"):
 		$Sprites.play("shoot")
