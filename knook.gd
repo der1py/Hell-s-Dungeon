@@ -16,7 +16,6 @@ var weaponDamage = [10, 15]
 func _ready():
 	add_to_group("player")
 	print("Hello World")
-	add_to_group("player")
 
 func _physics_process(delta):
 	

@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bi2k67c4wcsmr"]
+[gd_scene format=3 uid="uid://bi2k67c4wcsmr"]
 
 [ext_resource type="Texture2D" uid="uid://5yhu1hbsepvf" path="res://Assets/Enemies/Slime/slime.png" id="1_ga6gw"]
-[ext_resource type="Script" path="res://slime.gd" id="1_vqrah"]
+[ext_resource type="Script" uid="uid://cgk6ijkst674c" path="res://slime.gd" id="1_vqrah"]
+[ext_resource type="PackedScene" path="res://weapon.tscn" id="2_bratd"]
 [ext_resource type="Texture2D" uid="uid://diqnngm3ku7hu" path="res://Assets/Enemies/Slime/slime_walk.png" id="2_g8m85"]
 [ext_resource type="Texture2D" uid="uid://0wikbtis3ci8" path="res://Assets/Enemies/Slime/slime_dead.png" id="3_k71e1"]
 [ext_resource type="Texture2D" uid="uid://tpa6qrwn6hhi" path="res://Assets/Enemies/Slime/slime_hit.png" id="4_p5y5j"]
@@ -54,30 +55,32 @@ size = Vector2(48, 23)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6oqi"]
 size = Vector2(32, 8)
 
-[node name="Slime" type="CharacterBody2D"]
+[node name="Slime" type="CharacterBody2D" unique_id=1854339126]
 collision_layer = 8
 collision_mask = 67
 script = ExtResource("1_vqrah")
+bullet_scene = ExtResource("2_bratd")
+weapon_scene = ExtResource("2_bratd")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=873667669]
 sprite_frames = SubResource("SpriteFrames_mf88q")
 animation = &"crawl"
 autoplay = "crawl"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2062700937]
 position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_o72j3")
 
-[node name="HurtZone" type="Area2D" parent="."]
+[node name="HurtZone" type="Area2D" parent="." unique_id=1412566572]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtZone" unique_id=1394744345]
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_pbdpi")
 
-[node name="TopZone" type="Area2D" parent="."]
+[node name="TopZone" type="Area2D" parent="." unique_id=502278582]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TopZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopZone" unique_id=1266351827]
 position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_x6oqi")
 
