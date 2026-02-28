@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dlottdss7hci" path="res://Assets/Game Boy/platformChar_walk1.png" id="4_pgjjw"]
 [ext_resource type="Texture2D" uid="uid://bwdtg21fih2df" path="res://Assets/Game Boy/platformChar_walk2.png" id="5_hjefo"]
 [ext_resource type="Texture2D" uid="uid://lt8qjh5bw63l" path="res://Assets/Game Boy/platformChar_shoot.png" id="5_kcp3x"]
+[ext_resource type="Texture2D" uid="uid://bq88jmr7wtqrl" path="res://Assets/Game Boy/platformChar_idle_mogus.png" id="5_r8dtt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_skxi6"]
 animations = [{
@@ -36,6 +37,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("5_r8dtt")
+}],
+"loop": true,
+"name": &"melee",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("5_kcp3x")
 }],
 "loop": true,
@@ -60,11 +69,12 @@ size = Vector2(42, 66)
 [node name="Knook" type="CharacterBody2D" unique_id=1042665003]
 collision_mask = 22
 script = ExtResource("1_qpyad")
+attack_distance = null
 metadata/_edit_group_ = true
 
 [node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=426092347]
 sprite_frames = SubResource("SpriteFrames_skxi6")
-animation = &"shoot"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=203373408]
 position = Vector2(1, 15)

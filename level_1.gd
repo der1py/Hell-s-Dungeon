@@ -16,7 +16,6 @@ func _process(delta):
 func _on_reset_camera_limit_factory_body_entered(body):
 	$Knook/Camera2D.limit_bottom = 4000
 
-
 func _on_reset_camera_limit_cave_body_entered(body):
 	$Knook/Camera2D.limit_bottom = 1650
 	$Knook/Camera2D.limit_right = 15000
