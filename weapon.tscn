@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c3pr755nq0mq2"]
+
+[ext_resource type="Texture2D" uid="uid://o1dk8aglvi8w" path="res://Assets/striker.png" id="1_swcir"]
+
+[node name="Weapon" type="Node2D" unique_id=1003962555]
+
+[node name="Striker" type="Sprite2D" parent="." unique_id=1347333032]
+position = Vector2(583, 340)
+scale = Vector2(0.9572291, 0.95722896)
+texture = ExtResource("1_swcir")
