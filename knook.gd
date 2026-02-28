@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 var speed = 200
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var jumpForce = 600
-var timer = 10
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 2
+var jumpForce = 900 
+var timer = 10 #wtf does ts do
 
 func _ready():
 	print("Hello World")
