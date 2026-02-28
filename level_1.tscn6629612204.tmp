@@ -772,21 +772,21 @@ offset_right = 343.0
 offset_bottom = 173.0
 
 [node name="HP" type="Label" parent="HUD" unique_id=842053075]
-offset_left = 20.0
-offset_top = 17.0
-offset_right = 97.0
-offset_bottom = 83.0
+offset_left = 71.0
+offset_top = 16.0
+offset_right = 129.0
+offset_bottom = 82.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 45
-text = "100"
+text = "00"
 
 [node name="maxHP" type="Label" parent="HUD" unique_id=1435318498]
-offset_left = 96.0
-offset_top = 17.0
+offset_left = 121.0
+offset_top = 16.0
 offset_right = 191.0
-offset_bottom = 83.0
+offset_bottom = 82.0
 theme_override_font_sizes/font_size = 45
-text = "/100"
+text = "/30"
 
 [node name="LeapOfFaith" type="Label" parent="." unique_id=1349325428]
 offset_left = 12736.0

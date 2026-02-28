@@ -1,15 +1,27 @@
 extends CharacterBody2D
 
-var speed = 200
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 2
-var jumpForce = 900 
-var timer = 10 #wtf does ts do
+var speed = 450
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 4
+var jumpForce = 1100 
+var timer = 10 # wtf does ts do delet later??
+var can_dash = true
+var dash_power = 1700
+var dash_cooldown = 0 # seconds
+var hp = 100
+
+# weapons
+# 1 = pistol, 2 = shotgun
+var weaponDamage = [10, 15]
 
 func _ready():
 	print("Hello World")
 
 func _physics_process(delta):
 	
+	# die
+	if hp <= 0:
+		die()
+
 	#Fall With Gravity
 	velocity.y += gravity * delta
 	
@@ -27,7 +39,12 @@ func _physics_process(delta):
 			velocity.x = -speed
 	
 	if Input.is_action_just_pressed("dash"):
-		velocity.x *= 10
+		if not can_dash:
+			return
+		can_dash = false
+		velocity.x = dash_power * (1 if $Sprites.flip_h == false else -1)
+		await get_tree().create_timer(dash_cooldown).timeout
+		can_dash = true
 	
 	#Play Character Animations and Poses
 	if Input.is_action_pressed("ui_down"):
@@ -47,7 +64,6 @@ func _physics_process(delta):
 	
 	#Move Character
 	move_and_slide()
-
 
 func _on_fall_zone_body_entered(body):
 	die()
