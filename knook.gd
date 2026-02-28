@@ -8,8 +8,13 @@ var can_dash = true
 var dash_power = 1700
 var dash_cooldown = 0 # seconds
 var hp = 100
-var maxJumps = 3
+var maxJumps = 2
 var jumps = maxJumps
+var can_melee = true
+var melee_cooldown = 0.2
+
+@export var melee: PackedScene
+@export var attack_distance: float = 40
 
 # weapons
 # 1 = pistol, 2 = shotgun
@@ -31,6 +36,22 @@ func _physics_process(delta):
 	if is_on_floor():
 		jumps = maxJumps
 
+	# melee attack
+	if Input.is_action_just_pressed("lmb"):
+		melee_attack()
+		if not can_melee:
+			pass
+		else:
+			var mouse_pos = get_global_mouse_position()
+			if mouse_pos.x > global_position.x:
+				$Sprites.flip_h = false   # facing right
+			else:
+				$Sprites.flip_h = true    # facing left
+			can_melee = false
+			velocity.x += 400 * (1 if $Sprites.flip_h == false else -1)
+			await get_tree().create_timer(melee_cooldown).timeout
+			can_melee = true
+
 	#Jump
 	if Input.is_action_just_pressed("ui_up") and jumps > 0:
 		velocity.y = -jumpForce
@@ -47,11 +68,12 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("dash"):
 		if not can_dash:
-			return
-		can_dash = false
-		velocity.x = dash_power * (1 if $Sprites.flip_h == false else -1)
-		await get_tree().create_timer(dash_cooldown).timeout
-		can_dash = true
+			pass
+		else:
+			can_dash = false
+			velocity.x += dash_power * (1 if $Sprites.flip_h == false else -1)
+			await get_tree().create_timer(dash_cooldown).timeout
+			can_dash = true
 	
 	#Play Character Animations and Poses
 	if Input.is_action_pressed("ui_down"):
@@ -80,6 +102,13 @@ func _on_teleport_area_body_entered(body):
 	position.y = -2500
 	$Camera2D.limit_right = 5500
 
+func melee_attack():
+	var attack = melee.instantiate()
+	var direction = (get_global_mouse_position() - global_position).normalized()
+	attack.global_position = global_position + direction * attack_distance
+	attack.rotation = direction.angle()
+	get_tree().current_scene.add_child(attack)
+
 func die():
 	set_physics_process(false)
 	$Sprites.play("die")
@@ -93,3 +122,4 @@ func die():
 		position.x -= 20
 	await get_tree().create_timer(1).timeout
 	get_tree().change_scene_to_file("res://game_over.tscn")
+	

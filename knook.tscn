@@ -69,11 +69,12 @@ size = Vector2(42, 66)
 [node name="Knook" type="CharacterBody2D" unique_id=1042665003]
 collision_mask = 22
 script = ExtResource("1_qpyad")
+attack_distance = null
 metadata/_edit_group_ = true
 
 [node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=426092347]
 sprite_frames = SubResource("SpriteFrames_skxi6")
-animation = &"melee"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=203373408]
 position = Vector2(1, 15)
