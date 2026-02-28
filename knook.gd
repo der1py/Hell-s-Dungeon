@@ -6,6 +6,7 @@ var jumpForce = 900
 var timer = 10 #wtf does ts do
 
 func _ready():
+	add_to_group("player")
 	print("Hello World")
 
 func _physics_process(delta):
