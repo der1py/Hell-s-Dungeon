@@ -8,6 +8,8 @@ var can_dash = true
 var dash_power = 1700
 var dash_cooldown = 0 # seconds
 var hp = 100
+var maxJumps = 3
+var jumps = maxJumps
 
 # weapons
 # 1 = pistol, 2 = shotgun
@@ -26,9 +28,13 @@ func _physics_process(delta):
 	#Fall With Gravity
 	velocity.y += gravity * delta
 	
+	if is_on_floor():
+		jumps = maxJumps
+
 	#Jump
-	if Input.is_action_just_pressed("ui_up") and is_on_floor():
+	if Input.is_action_just_pressed("ui_up") and jumps > 0:
 		velocity.y = -jumpForce
+		jumps -= 1
 	
 	#Left/Right Movement
 	var ACCLERATION_CONSTANT = 6
