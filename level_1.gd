@@ -8,7 +8,6 @@ func _ready():
 	$Knook/Camera2D.limit_right = 15000
 	$Bumper.visible = false
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

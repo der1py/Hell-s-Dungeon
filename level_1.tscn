@@ -581,6 +581,7 @@ shape = SubResource("RectangleShape2D_p0ite")
 [node name="Knook" parent="." unique_id=48793376 instance=ExtResource("2_2a4ud")]
 position = Vector2(94, 405)
 melee = ExtResource("3_vs2k0")
+attack_distance = 40.0
 
 [node name="Camera2D" type="Camera2D" parent="Knook" unique_id=1281241282]
 limit_left = 5
