@@ -94,8 +94,9 @@ func melee_attack():
 		can_melee = true
 
 func _on_hurt_zone_body_entered(body):
-	if body.is_in_group("player"):
-		body.take_damage(damage)
+	pass
+	# if body.is_in_group("player"):
+	# 	body.take_damage(damage)
 
 func die():
 	set_physics_process(false)
@@ -112,6 +113,7 @@ func take_damage(amount):
 	if iframe:
 		return
 	hp -= amount
+	print(hp)
 	if hp <= 0:
 		die()
 	iframe = true

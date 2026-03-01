@@ -1,5 +1,4 @@
 extends CharacterBody2D
-
 var speed = 450
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 4
 var jumpForce = 1100 
@@ -37,6 +36,7 @@ var weaponDamage = [10, 15]
 func _ready():
 	add_to_group("player")
 	print("Hello World")
+	#health_bar.value = hp
 
 
 func _physics_process(delta):
@@ -197,9 +197,8 @@ func _on_fall_zone_body_entered(body):
 func melee_attack():
 	var attack = melee.instantiate() # instaniate doesnt spawn and add child does
 	attack.targetGroup = "enemy"
-	var direction = (get_global_mouse_position() - global_position).normalized()
-	attack.global_position = global_position + direction * attack_distance
-	attack.rotation = direction.angle()
+	var direction = (1 if $Sprites.flip_h == false else -1)
+	attack.global_position = global_position + Vector2(direction * attack_distance, 100)
 	attack.set_facing(global_position.direction_to(get_global_mouse_position()))
 	get_tree().current_scene.add_child(attack)
 

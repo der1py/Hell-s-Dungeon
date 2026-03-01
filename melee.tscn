@@ -23,3 +23,11 @@ rotation = 0.012217305
 scale = Vector2(0.583, 0.5)
 texture = ExtResource("2_bg0yx")
 offset = Vector2(12.202621, -1.8014526)
+
+[node name="Sprites2" type="Sprite2D" parent="." unique_id=1071176347]
+visible = false
+position = Vector2(42.999992, -77)
+rotation = 1.2130916
+scale = Vector2(0.459341, 0.37926915)
+texture = ExtResource("2_bg0yx")
+offset = Vector2(12.202621, -1.8014526)
