@@ -11,7 +11,7 @@ var hp = 100
 var maxJumps = 2
 var jumps = maxJumps
 var can_melee = true
-var melee_cooldown = 0.2
+var melee_cooldown = 0.3
 
 @export var melee: PackedScene
 @export var attack_distance: float = 40
@@ -37,8 +37,7 @@ func _physics_process(delta):
 		jumps = maxJumps
 
 	# melee attack
-	if Input.is_action_just_pressed("lmb"):
-		melee_attack()
+	if Input.is_action_pressed("lmb"):
 		if not can_melee:
 			pass
 		else:
@@ -49,6 +48,7 @@ func _physics_process(delta):
 				$Sprites.flip_h = true    # facing left
 			can_melee = false
 			velocity.x += 400 * (1 if $Sprites.flip_h == false else -1)
+			melee_attack()
 			await get_tree().create_timer(melee_cooldown).timeout
 			can_melee = true
 
@@ -107,6 +107,7 @@ func melee_attack():
 	var direction = (get_global_mouse_position() - global_position).normalized()
 	attack.global_position = global_position + direction * attack_distance
 	attack.rotation = direction.angle()
+	attack.set_facing(global_position.direction_to(get_global_mouse_position()))
 	get_tree().current_scene.add_child(attack)
 
 func die():

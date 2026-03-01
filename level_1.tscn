@@ -778,20 +778,36 @@ offset_top = 10.0
 offset_right = 343.0
 offset_bottom = 173.0
 
+[node name="dash" type="Label" parent="HUD" unique_id=131177906]
+offset_left = 19.0
+offset_top = 107.0
+offset_right = 209.0
+offset_bottom = 173.0
+theme_override_font_sizes/font_size = 45
+text = "dash:"
+
+[node name="attack1" type="Label" parent="HUD" unique_id=37549481]
+offset_left = 21.0
+offset_top = 57.0
+offset_right = 211.0
+offset_bottom = 123.0
+theme_override_font_sizes/font_size = 45
+text = "Attack 1:"
+
 [node name="HP" type="Label" parent="HUD" unique_id=842053075]
 offset_left = 20.0
-offset_top = 17.0
+offset_top = 8.0
 offset_right = 97.0
-offset_bottom = 83.0
+offset_bottom = 74.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 45
 text = "100"
 
 [node name="maxHP" type="Label" parent="HUD" unique_id=1435318498]
 offset_left = 96.0
-offset_top = 17.0
+offset_top = 8.0
 offset_right = 191.0
-offset_bottom = 83.0
+offset_bottom = 74.0
 theme_override_font_sizes/font_size = 45
 text = "/100"
 

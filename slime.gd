@@ -83,4 +83,3 @@ func _on_top_zone_body_entered(body):
 	body.velocity.y = -500
 	await get_tree().create_timer(1.5).timeout
 	queue_free()
-	
