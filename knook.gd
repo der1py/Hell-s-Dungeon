@@ -16,6 +16,8 @@ var rmb_cooldown = 0.1
 var can_rmb = true
 enum STATES { IDLE, DASHING, AIR, WALK, ATTACK1, ATTACK2, DEAD }
 var state = STATES.IDLE
+var iframe = false
+var iframe_time = 0.5
 
 # how long each state lasts for
 var default_time = 0.2 # default action time
@@ -72,6 +74,16 @@ func _physics_process(delta):
 	
 	#Move Character
 	move_and_slide()
+
+func take_damage(amount):
+	if iframe:
+		return
+	hp -= amount
+	if hp <= 0:
+		die()
+	iframe = true
+	await get_tree().create_timer(iframe_time).timeout
+	iframe = false
 
 func handle_y_movement(delta):
 	velocity.y += gravity * delta
@@ -181,7 +193,8 @@ func _on_teleport_area_body_entered(body):
 	$Camera2D.limit_right = 5500
 
 func melee_attack():
-	var attack = melee.instantiate()
+	var attack = melee.instantiate() # instaniate doesnt spawn and add child does
+	attack.targetGroup = "enemy"
 	var direction = (get_global_mouse_position() - global_position).normalized()
 	attack.global_position = global_position + direction * attack_distance
 	attack.rotation = direction.angle()
@@ -190,6 +203,7 @@ func melee_attack():
 
 func boomerang_attack():
 	var sword = boomerang.instantiate()
+	sword.targetGroup = "enemy"
 	sword.global_position = global_position
 
 	var dir = global_position.direction_to(get_global_mouse_position())
