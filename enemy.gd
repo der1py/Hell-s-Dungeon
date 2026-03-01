@@ -65,10 +65,16 @@ func _on_ShootTimer_timeout():
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = global_position
 	bullet.rotation = (player.global_position - global_position).angle()
-	
+
 func _on_hurt_zone_body_entered(body):
 	if body.is_in_group("player"):
 		body.hp -= 10
+
+func take_damage(amount):
+	hp -= amount
+	print(hp)
+	if hp <= 0:
+		die()
 
 func shoot():
 	if not can_shoot or not player:
@@ -86,12 +92,18 @@ func shoot():
 	can_shoot = true
 
 func _on_top_zone_body_entered(body):
+	pass
+	# body.velocity.y = -500
+	# die()
+
+func die():
 	set_physics_process(false)
-	$HurtZone.queue_free()
-	$TopZone.queue_free()
+	if $HurtZone:
+		$HurtZone.queue_free()
+	if $TopZone:
+		$TopZone.queue_free()
 	position.y += 10
 	$AnimatedSprite2D.play("squashed")
-	body.velocity.y = -500
 	await get_tree().create_timer(1.5).timeout
 	queue_free()
 
