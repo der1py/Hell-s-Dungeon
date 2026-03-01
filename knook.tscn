@@ -4,10 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://c3rqrbakpdh5o" path="res://Assets/Game Boy/platformChar_jump.png" id="2_n0urq"]
 [ext_resource type="Texture2D" uid="uid://c65sqgep5ns1m" path="res://Assets/Game Boy/platformChar_idle.png" id="2_txf8w"]
 [ext_resource type="Texture2D" uid="uid://t16waac7snd7" path="res://Assets/Game Boy/platformChar_die.png" id="3_6srf4"]
-[ext_resource type="Texture2D" uid="uid://dlottdss7hci" path="res://Assets/Game Boy/platformChar_walk1.png" id="4_pgjjw"]
-[ext_resource type="Texture2D" uid="uid://bwdtg21fih2df" path="res://Assets/Game Boy/platformChar_walk2.png" id="5_hjefo"]
 [ext_resource type="Texture2D" uid="uid://lt8qjh5bw63l" path="res://Assets/Game Boy/platformChar_shoot.png" id="5_kcp3x"]
 [ext_resource type="Texture2D" uid="uid://bq88jmr7wtqrl" path="res://Assets/Game Boy/platformChar_idle_mogus.png" id="5_r8dtt"]
+[ext_resource type="Texture2D" uid="uid://c32nvmae3atpb" path="res://Assets/Game Boy/run_1.png" id="7_iwks8"]
+[ext_resource type="Texture2D" uid="uid://bq4llqgitn118" path="res://Assets/Game Boy/run_2.png" id="8_psvsi"]
+[ext_resource type="Texture2D" uid="uid://c1rlh516yyss0" path="res://Assets/Game Boy/run_3.png" id="9_5hhnn"]
+[ext_resource type="Texture2D" uid="uid://bbrafquher85x" path="res://Assets/Game Boy/run_4.png" id="10_etcif"]
+[ext_resource type="Texture2D" uid="uid://c5orchvmymnps" path="res://Assets/Game Boy/run_5.png" id="11_bwxhd"]
+[ext_resource type="Texture2D" uid="uid://cqpl5ofixvik7" path="res://Assets/Game Boy/run_6.png" id="12_hqmm8"]
+[ext_resource type="Texture2D" uid="uid://dhjycbw1i0dlp" path="res://Assets/Game Boy/run_7.png" id="13_xcpce"]
+[ext_resource type="Texture2D" uid="uid://dmb3hr44utrgv" path="res://Assets/Game Boy/run_8.png" id="14_ch5bm"]
+[ext_resource type="Texture2D" uid="uid://bcs2yjsvwuaxp" path="res://Assets/Game Boy/run_9.png" id="15_n2nvw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_skxi6"]
 animations = [{
@@ -53,14 +60,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_pgjjw")
+"texture": ExtResource("7_iwks8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_hjefo")
+"texture": ExtResource("8_psvsi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5hhnn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_etcif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_bwxhd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_hqmm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_xcpce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ch5bm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_n2nvw")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v2af4"]
@@ -72,8 +100,10 @@ script = ExtResource("1_qpyad")
 metadata/_edit_group_ = true
 
 [node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=426092347]
+position = Vector2(0, -12)
+scale = Vector2(1.3999994, 1.3999994)
 sprite_frames = SubResource("SpriteFrames_skxi6")
-animation = &"idle"
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=203373408]
 position = Vector2(1, 15)
