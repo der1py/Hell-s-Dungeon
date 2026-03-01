@@ -67,11 +67,6 @@ func _on_hurt_zone_body_entered(body):
 	if body.is_in_group("player"):
 		body.hp -= 10
 
-func _on_top_zone_body_entered(body):
-	pass
-	# body.velocity.y = -500
-	# die()
-
 func die():
 	set_physics_process(false)
 	if $HurtZone:
@@ -82,3 +77,8 @@ func die():
 	$AnimatedSprite2D.play("squashed")
 	await get_tree().create_timer(1.5).timeout
 	queue_free()
+
+func take_damage(amount):
+	hp -= amount
+	if hp <= 0:
+		die()
