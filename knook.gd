@@ -34,6 +34,7 @@ func _ready():
 	add_to_group("player")
 	print("Hello World")
 
+
 func _physics_process(delta):
 	# die
 	if hp <= 0:
@@ -147,12 +148,25 @@ func animate():
 		$Sprites.play("melee")
 	elif state == STATES.ATTACK2:
 		$Sprites.play("shoot")
+	elif state == STATES.DASHING:
+		$Sprites.play("dash")
 	elif not is_on_floor():
-		$Sprites.play("air")
+		if Input.is_action_pressed("ui_up"):
+			$Sprites.play("jump")
+			$Sprites.set_frame_and_progress(0, 0) # restart animation
+		elif $Sprites.animation == "air":
+			$Sprites.play("air")
+		else:
+			$Sprites.play("jump")
+			$Sprites.animation_finished.connect(_on_animation_finished.bind($Sprites.animation))
 	elif state == STATES.WALK:
 		$Sprites.play("walk")
 	else:
 		$Sprites.play("idle")
+
+func _on_animation_finished(name):
+	if name == "jump":
+		$Sprites.play("air")
 
 func _on_fall_zone_body_entered(body):
 	die()
