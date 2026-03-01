@@ -58,7 +58,9 @@
 [ext_resource type="PackedScene" uid="uid://c07cqc8h2ntxb" path="res://enemy.tscn" id="55_2r2aj"]
 [ext_resource type="Texture2D" uid="uid://cfni7omjravf" path="res://Assets/Bumper.png" id="56_sn4b2"]
 [ext_resource type="Texture2D" uid="uid://bqecc3k2wrrxp" path="res://Assets/BumperNew.png" id="57_8xguk"]
+[ext_resource type="PackedScene" uid="uid://dbfxiv3kw7kax" path="res://boss.tscn" id="57_nqbpo"]
 [ext_resource type="PackedScene" uid="uid://dusxl60cwi65e" path="res://weapon.tscn" id="57_o4y1s"]
+[ext_resource type="Script" uid="uid://b5lss4bjxb0tp" path="res://boss.gd" id="58_nqbpo"]
 [ext_resource type="Texture2D" uid="uid://bwkswpj1tveak" path="res://Assets/bumper_half.png" id="60_4dh6q"]
 [ext_resource type="Script" uid="uid://caekkjm1n7kiq" path="res://HUD.gd" id="61_mtif1"]
 
@@ -664,6 +666,11 @@ shape = SubResource("RectangleShape2D_asugk")
 [node name="Enemy" parent="Enemies" unique_id=1854339126 instance=ExtResource("55_2r2aj")]
 position = Vector2(598, 446)
 bullet_scene = ExtResource("57_o4y1s")
+can_shoot = false
+
+[node name="Boss" parent="Enemies" unique_id=371843467 instance=ExtResource("57_nqbpo")]
+position = Vector2(380, 274)
+script = ExtResource("58_nqbpo")
 
 [node name="Coins" type="Node" parent="." unique_id=1473739431]
 
