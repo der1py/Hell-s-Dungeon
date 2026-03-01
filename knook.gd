@@ -18,6 +18,8 @@ var state = STATES.IDLE
 var iframe = false
 var iframe_time = 0.5
 
+var attack_range = 40
+
 # how long each state lasts for
 var default_time = 0.2 # default action time
 var dash_time = 0.2
