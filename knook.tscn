@@ -1,11 +1,17 @@
 [gd_scene format=3 uid="uid://dk86pq6xo1bmg"]
 
 [ext_resource type="Script" uid="uid://bov2hhnrlxo7x" path="res://knook.gd" id="1_qpyad"]
-[ext_resource type="Texture2D" uid="uid://c3rqrbakpdh5o" path="res://Assets/Game Boy/platformChar_jump.png" id="2_n0urq"]
-[ext_resource type="Texture2D" uid="uid://c65sqgep5ns1m" path="res://Assets/Game Boy/platformChar_idle.png" id="2_txf8w"]
+[ext_resource type="Texture2D" uid="uid://rq833pyxbpfb" path="res://Assets/Game Boy/jump_1.png" id="2_hqmm8"]
 [ext_resource type="Texture2D" uid="uid://t16waac7snd7" path="res://Assets/Game Boy/platformChar_die.png" id="3_6srf4"]
+[ext_resource type="Texture2D" uid="uid://c1pbr52ovs3l8" path="res://Assets/Game Boy/jump_0.png" id="3_n2nvw"]
+[ext_resource type="Texture2D" uid="uid://kldn7he3gh5u" path="res://Assets/Game Boy/jump_2.png" id="3_xcpce"]
+[ext_resource type="Texture2D" uid="uid://bb7uownyhhicv" path="res://Assets/Game Boy/idle_1.png" id="4_5hhnn"]
+[ext_resource type="Texture2D" uid="uid://bh2f627785ra" path="res://Assets/Game Boy/jump_3.png" id="4_ch5bm"]
+[ext_resource type="Texture2D" uid="uid://hyiihta4wych" path="res://Assets/Game Boy/idle_2.png" id="5_etcif"]
 [ext_resource type="Texture2D" uid="uid://lt8qjh5bw63l" path="res://Assets/Game Boy/platformChar_shoot.png" id="5_kcp3x"]
+[ext_resource type="Texture2D" uid="uid://bp7ougxksy0n3" path="res://Assets/Game Boy/jump_4.png" id="5_n2nvw"]
 [ext_resource type="Texture2D" uid="uid://bq88jmr7wtqrl" path="res://Assets/Game Boy/platformChar_idle_mogus.png" id="5_r8dtt"]
+[ext_resource type="Texture2D" uid="uid://b600afn5nygso" path="res://Assets/Game Boy/idle_3.png" id="6_bwxhd"]
 [ext_resource type="Texture2D" uid="uid://c32nvmae3atpb" path="res://Assets/Game Boy/run_1.png" id="7_iwks8"]
 [ext_resource type="Texture2D" uid="uid://bq4llqgitn118" path="res://Assets/Game Boy/run_2.png" id="8_psvsi"]
 [ext_resource type="Texture2D" uid="uid://c1rlh516yyss0" path="res://Assets/Game Boy/run_3.png" id="9_5hhnn"]
@@ -20,7 +26,7 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_n0urq")
+"texture": ExtResource("5_n2nvw")
 }],
 "loop": true,
 "name": &"air",
@@ -36,11 +42,40 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_txf8w")
+"texture": ExtResource("4_5hhnn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_etcif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bwxhd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_etcif")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 3.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_n2nvw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hqmm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xcpce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ch5bm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n2nvw")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -103,7 +138,7 @@ metadata/_edit_group_ = true
 position = Vector2(0, -12)
 scale = Vector2(1.3999994, 1.3999994)
 sprite_frames = SubResource("SpriteFrames_skxi6")
-animation = &"walk"
+animation = &"air"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=203373408]
 position = Vector2(1, 15)
