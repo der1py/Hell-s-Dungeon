@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://5yhu1hbsepvf" path="res://Assets/Enemies/Slime/slime.png" id="1_ga6gw"]
 [ext_resource type="Script" uid="uid://cgk6ijkst674c" path="res://slime.gd" id="1_vqrah"]
-[ext_resource type="PackedScene" path="res://weapon.tscn" id="2_bratd"]
+[ext_resource type="PackedScene" uid="uid://dusxl60cwi65e" path="res://weapon.tscn" id="2_bratd"]
 [ext_resource type="Texture2D" uid="uid://diqnngm3ku7hu" path="res://Assets/Enemies/Slime/slime_walk.png" id="2_g8m85"]
 [ext_resource type="Texture2D" uid="uid://0wikbtis3ci8" path="res://Assets/Enemies/Slime/slime_dead.png" id="3_k71e1"]
 [ext_resource type="Texture2D" uid="uid://tpa6qrwn6hhi" path="res://Assets/Enemies/Slime/slime_hit.png" id="4_p5y5j"]

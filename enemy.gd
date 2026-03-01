@@ -3,25 +3,32 @@ extends CharacterBody2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var speed = 75
 var player = null
-var can_shoot = true
 var hp = 100
+var iframe = false
+var iframe_time = 0.5
+var weapon: Node2D
 
 @export var direction = -1 #1 is right, -1 is left
 @export var follow_distance = 600
 @export var bullet_scene: PackedScene
 @export var shoot_cooldown = 1.2
+@export var damage = 10
+@export var can_shoot = true
 
 func _ready():
+	add_to_group("enemy")
 	player = get_tree().get_first_node_in_group("player")
 
-	# Timer
-	var shoot_timer = Timer.new()
-	shoot_timer.name = "ShootTimer"
-	shoot_timer.wait_time = shoot_cooldown
-	shoot_timer.one_shot = false
-	shoot_timer.autostart = false
-	add_child(shoot_timer)
-	shoot_timer.timeout.connect(_on_ShootTimer_timeout)
+	if can_shoot:
+		# Timer for pew pew
+		var shoot_timer = Timer.new()
+		shoot_timer.name = "ShootTimer"
+		shoot_timer.wait_time = shoot_cooldown
+		shoot_timer.one_shot = false
+		shoot_timer.autostart = false
+		add_child(shoot_timer)
+		shoot_timer.timeout.connect(_on_ShootTimer_timeout)
+
 	$AnimatedSprite2D.flip_h = false if direction == -1 else true
 	
 func _physics_process(delta):
@@ -38,14 +45,14 @@ func _physics_process(delta):
 			direction = sign(player.global_position.x - global_position.x)
 			$AnimatedSprite2D.flip_h = direction < 0
 
-			if $ShootTimer.is_stopped():
+			if can_shoot and $ShootTimer.is_stopped():
 				$ShootTimer.start()
-		elif is_on_wall():
-			direction = direction * -1
-			$AnimatedSprite2D.flip_h = not $AnimatedSprite2D.flip_h
+		# elif is_on_wall():
+		# 	direction = direction * -1
+		# 	$AnimatedSprite2D.flip_h = not $AnimatedSprite2D.flip_h
 			
-			if not $ShootTimer.is_stopped():
-				$ShootTimer.stop()
+		# 	if can_shoot and not $ShootTimer.is_stopped():
+		# 		$ShootTimer.stop()
 	
 	#move left/right
 	velocity.x = speed * direction
@@ -53,6 +60,7 @@ func _physics_process(delta):
 	#actually move the object
 	move_and_slide()
 
+# called periodically by the shoot timer
 func _on_ShootTimer_timeout():
 	if not player or not bullet_scene:
 		return
@@ -64,7 +72,7 @@ func _on_ShootTimer_timeout():
 
 func _on_hurt_zone_body_entered(body):
 	if body.is_in_group("player"):
-		body.hp -= 10
+		body.take_damage(damage)
 
 func die():
 	set_physics_process(false)
@@ -78,6 +86,11 @@ func die():
 	queue_free()
 
 func take_damage(amount):
+	if iframe:
+		return
 	hp -= amount
 	if hp <= 0:
 		die()
+	iframe = true
+	await get_tree().create_timer(iframe_time).timeout
+	iframe = false

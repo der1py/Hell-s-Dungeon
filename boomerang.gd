@@ -9,6 +9,7 @@ var direction: Vector2
 var start_position: Vector2
 var returning := false
 var player: Node2D
+var targetGroup = "" # set this bro
 
 func _ready():
 	start_position = global_position
@@ -29,6 +30,7 @@ func _physics_process(delta):
 			returning = true
 	else:
 		# Return to player
+		speed += 100 * delta
 		var return_dir = (player.global_position - global_position).normalized()
 		global_position += return_dir * speed * delta
 		
@@ -40,5 +42,5 @@ func _physics_process(delta):
 	rotation += 15 * delta  # spin effect
 
 func _on_body_entered(body):
-	if body.has_method("take_damage"):
+	if body.has_method("take_damage") and body.is_in_group(targetGroup):
 		body.take_damage(damage)
