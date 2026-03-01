@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dbfxiv3kw7kax"]
+
+[ext_resource type="Texture2D" uid="uid://cukubancf27fw" path="res://Assets/Enemies/Cerberus/cerberus_idle.png" id="1_0bnu1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6xxrv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0bnu1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_skx2t"]
+size = Vector2(58, 52)
+
+[node name="Boss" type="CharacterBody2D" unique_id=797871086]
+collision_layer = 8
+collision_mask = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=789917542]
+scale = Vector2(1.5375257, 1.5375257)
+sprite_frames = SubResource("SpriteFrames_6xxrv")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=796471252]
+scale = Vector2(2.336379, -2.057872)
+shape = SubResource("RectangleShape2D_skx2t")
