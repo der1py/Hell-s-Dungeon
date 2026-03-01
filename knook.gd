@@ -1,5 +1,4 @@
 extends CharacterBody2D
-
 var speed = 450
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 4
 var jumpForce = 1100 
@@ -37,6 +36,7 @@ var weaponDamage = [10, 15]
 func _ready():
 	add_to_group("player")
 	print("Hello World")
+	#health_bar.value = hp
 
 
 func _physics_process(delta):
