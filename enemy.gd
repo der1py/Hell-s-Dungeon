@@ -13,6 +13,8 @@ var can_melee = true
 var melee_cooldown = 0.5
 var attack_range = 40
 
+var shoot_timer
+
 @export var direction = -1 #1 is right, -1 is left
 @export var follow_distance = 600
 @export var bullet_scene: PackedScene
@@ -28,7 +30,7 @@ func _ready():
 
 	if can_shoot:
 		# Timer for pew pew
-		var shoot_timer = Timer.new()
+		shoot_timer = Timer.new()
 		shoot_timer.name = "ShootTimer"
 		shoot_timer.wait_time = shoot_cooldown
 		shoot_timer.one_shot = false
