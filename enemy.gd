@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Enemy
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var speed = 75
@@ -8,12 +9,18 @@ var iframe = false
 var iframe_time = 0.5
 var weapon: Node2D
 
+var can_melee = true
+var melee_cooldown = 0.5
+var attack_range = 40
+
 @export var direction = -1 #1 is right, -1 is left
 @export var follow_distance = 600
 @export var bullet_scene: PackedScene
 @export var shoot_cooldown = 1.2
 @export var damage = 10
 @export var can_shoot = true
+@export var melee: PackedScene # melee attack
+
 
 func _ready():
 	add_to_group("enemy")
@@ -69,6 +76,22 @@ func _on_ShootTimer_timeout():
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = global_position
 	bullet.rotation = (player.global_position - global_position).angle()
+
+func melee_attack():
+	if not melee or not can_melee:
+		return
+
+	var distance = global_position.distance_to(player.global_position)
+	if distance <= attack_range:
+		can_melee = false
+		
+		var attack = melee.instantiate()
+		attack.targetGroup = "player"
+		get_tree().current_scene.add_child(attack)
+		attack.global_position = global_position
+		attack.rotation = (player.global_position - global_position).angle()
+		await get_tree().create_timer(melee_cooldown).timeout
+		can_melee = true
 
 func _on_hurt_zone_body_entered(body):
 	if body.is_in_group("player"):
