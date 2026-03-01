@@ -14,7 +14,7 @@ var can_melee = true
 var melee_cooldown = 0.3
 var rmb_cooldown = 0.1
 var can_rmb = true
-enum STATES { IDLE, DASHING, AIR, WALK, ATTACK1, ATTACK2}
+enum STATES { IDLE, DASHING, AIR, WALK, ATTACK1, ATTACK2, DEAD }
 var state = STATES.IDLE
 
 # how long each state lasts for
@@ -144,6 +144,10 @@ func handle_attack_input():
 			can_rmb = true
 
 func animate():
+	if state == STATES.DEAD:
+		$Sprites.play("die")
+		return
+
 	if state == STATES.ATTACK1:
 		$Sprites.play("melee")
 	elif state == STATES.ATTACK2:
@@ -194,6 +198,7 @@ func boomerang_attack():
 	get_tree().current_scene.add_child(sword)
 
 func die():
+	state = STATES.DEAD
 	set_physics_process(false)
 	$Sprites.play("die")
 	await get_tree().create_timer(1).timeout
