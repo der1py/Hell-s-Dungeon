@@ -60,7 +60,6 @@ func _on_ShootTimer_timeout():
 	var bullet = bullet_scene.instantiate()
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = global_position
-	print(global_position)
 	bullet.rotation = (player.global_position - global_position).angle()
 
 func _on_hurt_zone_body_entered(body):

@@ -3,10 +3,19 @@
 [ext_resource type="Script" uid="uid://bt4houtdg4jus" path="res://bullet.gd" id="1_o2wld"]
 [ext_resource type="Texture2D" uid="uid://o1dk8aglvi8w" path="res://Assets/striker.png" id="1_swcir"]
 
-[node name="Weapon" type="Node2D" unique_id=1003962555]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2wld"]
+size = Vector2(960.0001, 430.00012)
+
+[node name="Weapon" type="Area2D" unique_id=1260342328]
+scale = Vector2(0.1, 0.1)
 script = ExtResource("1_o2wld")
 
 [node name="Striker" type="Sprite2D" parent="." unique_id=1347333032]
 position = Vector2(583, 340)
 scale = Vector2(0.9572291, 0.95722896)
 texture = ExtResource("1_swcir")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1580031847]
+position = Vector2(589.9998, 334.99994)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_o2wld")

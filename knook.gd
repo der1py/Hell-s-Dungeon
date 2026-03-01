@@ -5,7 +5,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 4
 var jumpForce = 1100 
 var timer = 10 # wtf does ts do delet later??
 var can_dash = true
-var dash_power = 1700
+var dash_power = 1500
 var dash_cooldown = 0 # seconds
 var hp = 100
 var maxJumps = 2
@@ -14,6 +14,12 @@ var can_melee = true
 var melee_cooldown = 0.3
 var rmb_cooldown = 0.1
 var can_rmb = true
+enum STATES { IDLE, DASHING, AIR, WALK, ATTACK1, ATTACK2}
+var state = STATES.IDLE
+
+# how long each state lasts for
+var default_time = 0.2 # default action time
+var dash_time = 0.2
 
 @export var melee: PackedScene
 @export var attack_distance: float = 40
@@ -33,11 +39,71 @@ func _physics_process(delta):
 	if hp <= 0:
 		die()
 
-	#Fall With Gravity
+	# freeze all this shi when u dash lol
+	if state != STATES.DASHING:
+		handle_y_movement(delta)
+
+		handle_attack_input()
+		
+		handle_x_movement(delta)
+	
+	if Input.is_action_just_pressed("dash"):
+		if not can_dash:
+			pass
+		else:
+			can_dash = false
+			velocity.x = dash_power * (1 if $Sprites.flip_h == false else -1)
+			state = STATES.DASHING
+			await get_tree().create_timer(dash_time).timeout
+			velocity.x = 0
+			state = STATES.IDLE
+			await get_tree().create_timer(max(dash_cooldown - dash_time, 0)).timeout
+			can_dash = true
+	
+	#Play Character Animations and Poses
+	animate()
+	
+	#Flip Character Sprites Left/Right
+	if Input.is_action_pressed("ui_right"):
+		$Sprites.flip_h = false
+	elif Input.is_action_pressed("ui_left"):
+		$Sprites.flip_h = true
+	
+	#Move Character
+	move_and_slide()
+
+func handle_y_movement(delta):
 	velocity.y += gravity * delta
 	
 	if is_on_floor():
 		jumps = maxJumps
+
+	if Input.is_action_just_pressed("ui_up") and jumps > 0 and state != STATES.ATTACK1 and state != STATES.ATTACK2:
+		velocity.y = -jumpForce
+		jumps -= 1
+
+func handle_x_movement(delta):
+	var ACCELERATION_CONSTANT = 6
+	velocity.x = max(0, velocity.x - speed * delta * ACCELERATION_CONSTANT) if velocity.x > 0 else min(0, velocity.x + speed * delta * ACCELERATION_CONSTANT)
+	
+	# move if not currently attacking
+	if (state != STATES.ATTACK1 and state != STATES.ATTACK2):
+		if Input.is_action_pressed("ui_right") and velocity.x < speed:
+			velocity.x = speed
+			state = STATES.WALK
+		elif Input.is_action_pressed("ui_left") and velocity.x > -speed:
+			velocity.x = -speed
+			state = STATES.WALK
+		else:
+			if is_on_floor():
+				state = STATES.IDLE
+			else:
+				state = STATES.AIR
+
+func handle_attack_input():
+	# can only attack in these states
+	if not (state == STATES.IDLE or state == STATES.WALK or state == STATES.AIR):
+		return
 
 	# melee attack
 	if Input.is_action_pressed("lmb"):
@@ -52,9 +118,15 @@ func _physics_process(delta):
 			can_melee = false
 			velocity.x += 400 * (1 if $Sprites.flip_h == false else -1)
 			melee_attack()
-			await get_tree().create_timer(melee_cooldown).timeout
+
+			state = STATES.ATTACK1
+			await get_tree().create_timer(default_time).timeout
+			state = STATES.IDLE
+
+			await get_tree().create_timer(max(melee_cooldown - default_time, 0)).timeout
 			can_melee = true
 	
+	# boomerang attack
 	if Input.is_action_pressed("rmb"):
 		if not can_rmb:
 			pass
@@ -62,50 +134,25 @@ func _physics_process(delta):
 			can_rmb = false
 			can_melee = false
 			boomerang_attack()
-			await get_tree().create_timer(rmb_cooldown).timeout
+
+			state = STATES.ATTACK2
+			await get_tree().create_timer(default_time).timeout
+			state = STATES.IDLE
+
+			await get_tree().create_timer(max(rmb_cooldown - default_time, 0)).timeout
 			can_rmb = true
 
-	#Jump
-	if Input.is_action_just_pressed("ui_up") and jumps > 0:
-		velocity.y = -jumpForce
-		jumps -= 1
-	
-	#Left/Right Movement
-	var ACCLERATION_CONSTANT = 6
-	velocity.x = max(0, velocity.x - speed * delta * ACCLERATION_CONSTANT) if velocity.x > 0 else min(0, velocity.x + speed * delta * ACCLERATION_CONSTANT)
-	if not Input.is_action_pressed("ui_down"):
-		if Input.is_action_pressed("ui_right") and velocity.x < speed:
-			velocity.x = speed
-		elif Input.is_action_pressed("ui_left") and velocity.x > -speed:
-			velocity.x = -speed
-	
-	if Input.is_action_just_pressed("dash"):
-		if not can_dash:
-			pass
-		else:
-			can_dash = false
-			velocity.x += dash_power * (1 if $Sprites.flip_h == false else -1)
-			await get_tree().create_timer(dash_cooldown).timeout
-			can_dash = true
-	
-	#Play Character Animations and Poses
-	if Input.is_action_pressed("ui_down"):
+func animate():
+	if state == STATES.ATTACK1:
+		$Sprites.play("melee")
+	elif state == STATES.ATTACK2:
 		$Sprites.play("shoot")
 	elif not is_on_floor():
 		$Sprites.play("air")
-	elif Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left"):
+	elif state == STATES.WALK:
 		$Sprites.play("walk")
 	else:
 		$Sprites.play("idle")
-	
-	#Flip Character Sprites Left/Right
-	if Input.is_action_pressed("ui_right"):
-		$Sprites.flip_h = false
-	elif Input.is_action_pressed("ui_left"):
-		$Sprites.flip_h = true
-	
-	#Move Character
-	move_and_slide()
 
 func _on_fall_zone_body_entered(body):
 	die()
