@@ -6,6 +6,11 @@ extends Area2D
 var hit_targets = []
 
 func _ready():
+	var mouse_pos = get_global_mouse_position()
+	if mouse_pos.x > global_position.x:
+		$Sprites.flip_h = false   # facing right
+	else:
+		$Sprites.flip_h = true    # facing left
 	await get_tree().create_timer(lifetime).timeout
 	queue_free()
 
