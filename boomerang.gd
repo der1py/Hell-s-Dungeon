@@ -30,6 +30,7 @@ func _physics_process(delta):
 			returning = true
 	else:
 		# Return to player
+		speed += 100 * delta
 		var return_dir = (player.global_position - global_position).normalized()
 		global_position += return_dir * speed * delta
 		
