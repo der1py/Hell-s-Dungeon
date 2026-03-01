@@ -1,8 +1,10 @@
-[gd_scene format=3 uid="uid://c3pr755nq0mq2"]
+[gd_scene format=3 uid="uid://dusxl60cwi65e"]
 
+[ext_resource type="Script" uid="uid://bt4houtdg4jus" path="res://bullet.gd" id="1_o2wld"]
 [ext_resource type="Texture2D" uid="uid://o1dk8aglvi8w" path="res://Assets/striker.png" id="1_swcir"]
 
 [node name="Weapon" type="Node2D" unique_id=1003962555]
+script = ExtResource("1_o2wld")
 
 [node name="Striker" type="Sprite2D" parent="." unique_id=1347333032]
 position = Vector2(583, 340)

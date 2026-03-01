@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bw0u6h4rb22ke" path="res://Assets/Metal/metalFenceAlt.png" id="4_bvjun"]
 [ext_resource type="Texture2D" uid="uid://22cvgnb7rsuj" path="res://Assets/Grass/slice16_16.png" id="4_mu38l"]
 [ext_resource type="Texture2D" uid="uid://x5ceppod1vef" path="res://Assets/Grass/slice03_03.png" id="4_u16l1"]
+[ext_resource type="PackedScene" uid="uid://bc0ohr21oq2po" path="res://boomerang.tscn" id="4_yx7fw"]
 [ext_resource type="Texture2D" uid="uid://c6ppqap7n3ii4" path="res://Assets/Grass/slice17_17.png" id="5_8c1ft"]
 [ext_resource type="Texture2D" uid="uid://5luqglxxu5w0" path="res://Assets/Grass/slice04_04.png" id="5_44q7h"]
 [ext_resource type="Texture2D" uid="uid://cfopaefpm11qj" path="res://Assets/Grass/slice18_18.png" id="6_bw3rl"]
@@ -55,6 +56,7 @@
 [ext_resource type="Texture2D" uid="uid://ddlv0ur8dy46" path="res://Assets/World Extras/liquidLavaTop_mid.png" id="45_sliij"]
 [ext_resource type="Texture2D" uid="uid://bfxnk4shjvho4" path="res://Assets/World Extras/chain.png" id="47_dl1cp"]
 [ext_resource type="PackedScene" uid="uid://bi2k67c4wcsmr" path="res://slime.tscn" id="48_7ypy2"]
+[ext_resource type="PackedScene" uid="uid://c07cqc8h2ntxb" path="res://enemy.tscn" id="55_2r2aj"]
 [ext_resource type="Texture2D" uid="uid://cfni7omjravf" path="res://Assets/Bumper.png" id="56_sn4b2"]
 [ext_resource type="Texture2D" uid="uid://bqecc3k2wrrxp" path="res://Assets/BumperNew.png" id="57_8xguk"]
 [ext_resource type="Texture2D" uid="uid://bwkswpj1tveak" path="res://Assets/bumper_half.png" id="60_4dh6q"]
@@ -513,6 +515,7 @@ sources/2 = SubResource("TileSetAtlasSource_23vms")
 [node name="Level1" type="Node2D" unique_id=332795906]
 position = Vector2(1, 0)
 script = ExtResource("1_2r1mu")
+metadata/_edit_vertical_guides_ = [-143.0]
 
 [node name="ColorRectSky" type="ColorRect" parent="." unique_id=1091380909]
 offset_left = -78.0
@@ -580,6 +583,7 @@ shape = SubResource("RectangleShape2D_p0ite")
 [node name="Knook" parent="." unique_id=48793376 instance=ExtResource("2_2a4ud")]
 position = Vector2(94, 405)
 melee = ExtResource("3_vs2k0")
+boomerang = ExtResource("4_yx7fw")
 
 [node name="Camera2D" type="Camera2D" parent="Knook" unique_id=1281241282]
 limit_left = 5
@@ -659,6 +663,9 @@ shape = SubResource("RectangleShape2D_asugk")
 
 [node name="Slime" parent="Enemies" unique_id=445005890 instance=ExtResource("48_7ypy2")]
 position = Vector2(491, 287)
+
+[node name="Enemy" parent="Enemies" unique_id=1854339126 instance=ExtResource("55_2r2aj")]
+position = Vector2(598, 446)
 
 [node name="Coins" type="Node" parent="." unique_id=1473739431]
 
@@ -773,20 +780,36 @@ offset_top = 10.0
 offset_right = 343.0
 offset_bottom = 173.0
 
+[node name="dash" type="Label" parent="HUD" unique_id=131177906]
+offset_left = 19.0
+offset_top = 107.0
+offset_right = 209.0
+offset_bottom = 173.0
+theme_override_font_sizes/font_size = 45
+text = "dash:"
+
+[node name="attack1" type="Label" parent="HUD" unique_id=37549481]
+offset_left = 21.0
+offset_top = 57.0
+offset_right = 211.0
+offset_bottom = 123.0
+theme_override_font_sizes/font_size = 45
+text = "Attack 1:"
+
 [node name="HP" type="Label" parent="HUD" unique_id=842053075]
 offset_left = 20.0
-offset_top = 17.0
+offset_top = 8.0
 offset_right = 97.0
-offset_bottom = 83.0
+offset_bottom = 74.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 45
 text = "100"
 
 [node name="maxHP" type="Label" parent="HUD" unique_id=1435318498]
 offset_left = 96.0
-offset_top = 17.0
+offset_top = 8.0
 offset_right = 191.0
-offset_bottom = 83.0
+offset_bottom = 74.0
 theme_override_font_sizes/font_size = 45
 text = "/100"
 

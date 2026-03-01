@@ -11,10 +11,14 @@ var hp = 100
 var maxJumps = 2
 var jumps = maxJumps
 var can_melee = true
-var melee_cooldown = 0.2
+var melee_cooldown = 0.3
+var rmb_cooldown = 0.1
+var can_rmb = true
 
 @export var melee: PackedScene
 @export var attack_distance: float = 40
+
+@export var boomerang: PackedScene
 
 # weapons
 # 1 = pistol, 2 = shotgun
@@ -23,10 +27,8 @@ var weaponDamage = [10, 15]
 func _ready():
 	add_to_group("player")
 	print("Hello World")
-	add_to_group("player")
 
 func _physics_process(delta):
-	
 	# die
 	if hp <= 0:
 		die()
@@ -38,8 +40,7 @@ func _physics_process(delta):
 		jumps = maxJumps
 
 	# melee attack
-	if Input.is_action_just_pressed("lmb"):
-		melee_attack()
+	if Input.is_action_pressed("lmb"):
 		if not can_melee:
 			pass
 		else:
@@ -50,8 +51,19 @@ func _physics_process(delta):
 				$Sprites.flip_h = true    # facing left
 			can_melee = false
 			velocity.x += 400 * (1 if $Sprites.flip_h == false else -1)
+			melee_attack()
 			await get_tree().create_timer(melee_cooldown).timeout
 			can_melee = true
+	
+	if Input.is_action_pressed("rmb"):
+		if not can_rmb:
+			pass
+		else:
+			can_rmb = false
+			can_melee = false
+			boomerang_attack()
+			await get_tree().create_timer(rmb_cooldown).timeout
+			can_rmb = true
 
 	#Jump
 	if Input.is_action_just_pressed("ui_up") and jumps > 0:
@@ -108,7 +120,17 @@ func melee_attack():
 	var direction = (get_global_mouse_position() - global_position).normalized()
 	attack.global_position = global_position + direction * attack_distance
 	attack.rotation = direction.angle()
+	attack.set_facing(global_position.direction_to(get_global_mouse_position()))
 	get_tree().current_scene.add_child(attack)
+
+func boomerang_attack():
+	var sword = boomerang.instantiate()
+	sword.global_position = global_position
+
+	var dir = global_position.direction_to(get_global_mouse_position())
+	sword.setup(dir, self)
+
+	get_tree().current_scene.add_child(sword)
 
 func die():
 	set_physics_process(false)

@@ -1,21 +1,20 @@
-[gd_scene format=3 uid="uid://bi2k67c4wcsmr"]
+[gd_scene format=3 uid="uid://c07cqc8h2ntxb"]
 
-[ext_resource type="Texture2D" uid="uid://5yhu1hbsepvf" path="res://Assets/Enemies/Slime/slime.png" id="1_ga6gw"]
-[ext_resource type="Script" uid="uid://cgk6ijkst674c" path="res://slime.gd" id="1_vqrah"]
-[ext_resource type="PackedScene" path="res://weapon.tscn" id="2_bratd"]
-[ext_resource type="Texture2D" uid="uid://diqnngm3ku7hu" path="res://Assets/Enemies/Slime/slime_walk.png" id="2_g8m85"]
-[ext_resource type="Texture2D" uid="uid://0wikbtis3ci8" path="res://Assets/Enemies/Slime/slime_dead.png" id="3_k71e1"]
-[ext_resource type="Texture2D" uid="uid://tpa6qrwn6hhi" path="res://Assets/Enemies/Slime/slime_hit.png" id="4_p5y5j"]
-[ext_resource type="Texture2D" uid="uid://df7wd8xysik2y" path="res://Assets/Enemies/Slime/slime_squashed.png" id="6_sq77h"]
+[ext_resource type="Script" uid="uid://ckjjwd1y5at18" path="res://enemy.gd" id="1_3yqyl"]
+[ext_resource type="Texture2D" uid="uid://5yhu1hbsepvf" path="res://Assets/Enemies/Slime/slime.png" id="3_e1ltt"]
+[ext_resource type="Texture2D" uid="uid://diqnngm3ku7hu" path="res://Assets/Enemies/Slime/slime_walk.png" id="4_dxifv"]
+[ext_resource type="Texture2D" uid="uid://0wikbtis3ci8" path="res://Assets/Enemies/Slime/slime_dead.png" id="5_pwjut"]
+[ext_resource type="Texture2D" uid="uid://tpa6qrwn6hhi" path="res://Assets/Enemies/Slime/slime_hit.png" id="6_n0g06"]
+[ext_resource type="Texture2D" uid="uid://df7wd8xysik2y" path="res://Assets/Enemies/Slime/slime_squashed.png" id="7_ar8e5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mf88q"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ga6gw")
+"texture": ExtResource("3_e1ltt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_g8m85")
+"texture": ExtResource("4_dxifv")
 }],
 "loop": true,
 "name": &"crawl",
@@ -23,7 +22,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_k71e1")
+"texture": ExtResource("5_pwjut")
 }],
 "loop": true,
 "name": &"die",
@@ -31,7 +30,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_p5y5j")
+"texture": ExtResource("6_n0g06")
 }],
 "loop": true,
 "name": &"hit",
@@ -39,7 +38,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_sq77h")
+"texture": ExtResource("7_ar8e5")
 }],
 "loop": true,
 "name": &"squashed",
@@ -53,14 +52,12 @@ size = Vector2(40, 2)
 size = Vector2(48, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6oqi"]
-size = Vector2(32, 8)
+size = Vector2(35, 8)
 
-[node name="Slime" type="CharacterBody2D" unique_id=1854339126]
+[node name="Enemy" type="CharacterBody2D" unique_id=1854339126]
 collision_layer = 8
 collision_mask = 67
-script = ExtResource("1_vqrah")
-bullet_scene = ExtResource("2_bratd")
-weapon_scene = ExtResource("2_bratd")
+script = ExtResource("1_3yqyl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=873667669]
 sprite_frames = SubResource("SpriteFrames_mf88q")
@@ -81,7 +78,7 @@ shape = SubResource("RectangleShape2D_pbdpi")
 [node name="TopZone" type="Area2D" parent="." unique_id=502278582]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopZone" unique_id=1266351827]
-position = Vector2(0, -14)
+position = Vector2(-0.5, -14)
 shape = SubResource("RectangleShape2D_x6oqi")
 
 [connection signal="body_entered" from="HurtZone" to="." method="_on_hurt_zone_body_entered"]

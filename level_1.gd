@@ -1,6 +1,5 @@
 extends Node2D
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.coins = 0
@@ -9,7 +8,6 @@ func _ready():
 	$Knook/Camera2D.limit_top = -500   # example value
 	$Bumper.visible = false
 	$Knook/Camera2D.offset.y = -150
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
