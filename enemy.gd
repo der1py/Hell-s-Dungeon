@@ -119,3 +119,10 @@ func take_damage(amount):
 	iframe = true
 	await get_tree().create_timer(iframe_time).timeout
 	iframe = false
+
+# ignore iframes and other damage reduction, used for things like explosions that should always kill the enemy if they hit
+func true_damage(amount):
+	hp -= amount
+	print(hp)
+	if hp <= 0:
+		die()
