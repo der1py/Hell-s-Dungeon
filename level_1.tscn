@@ -512,6 +512,12 @@ sources/0 = SubResource("TileSetAtlasSource_y7ush")
 sources/1 = SubResource("TileSetAtlasSource_62iqj")
 sources/2 = SubResource("TileSetAtlasSource_23vms")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yx7fw"]
+bg_color = Color(0.20018339, 0.20367175, 0.17552426, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4y1s"]
+bg_color = Color(0.9999998, 0.17422298, 0.43778902, 1)
+
 [node name="Level1" type="Node2D" unique_id=332795906]
 position = Vector2(1, 0)
 script = ExtResource("1_2r1mu")
@@ -810,6 +816,15 @@ offset_right = 191.0
 offset_bottom = 74.0
 theme_override_font_sizes/font_size = 45
 text = "/100"
+
+[node name="ProgressBar" type="ProgressBar" parent="HUD" unique_id=1119081831]
+offset_left = 166.0
+offset_top = 45.0
+offset_right = 393.0
+offset_bottom = 86.0
+theme_override_styles/background = SubResource("StyleBoxFlat_yx7fw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_o4y1s")
+value = 100.0
 
 [node name="LeapOfFaith" type="Label" parent="." unique_id=1349325428]
 offset_left = 12736.0
