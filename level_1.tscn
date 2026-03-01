@@ -5,8 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b37cg6k0epgwh" path="res://Assets/Grass/slice01_01.png" id="2_fr1en"]
 [ext_resource type="Texture2D" uid="uid://byx1kx0b7oowq" path="res://Assets/Grass/slice02_02.png" id="3_hftwh"]
 [ext_resource type="PackedScene" uid="uid://csrhoya60rhmd" path="res://snake.tscn" id="3_lvnn3"]
-[ext_resource type="PackedScene" path="res://weapon.tscn" id="3_vs2k0"]
-; [ext_resource type="PackedScene" uid="uid://cxdkbd24sy3p7" path="res://melee.tscn" id="3_vs2k0"]
+[ext_resource type="PackedScene" uid="uid://cxdkbd24sy3p7" path="res://melee.tscn" id="3_vs2k0"]
 [ext_resource type="Texture2D" uid="uid://bw0u6h4rb22ke" path="res://Assets/Metal/metalFenceAlt.png" id="4_bvjun"]
 [ext_resource type="Texture2D" uid="uid://22cvgnb7rsuj" path="res://Assets/Grass/slice16_16.png" id="4_mu38l"]
 [ext_resource type="Texture2D" uid="uid://x5ceppod1vef" path="res://Assets/Grass/slice03_03.png" id="4_u16l1"]
@@ -514,6 +513,7 @@ sources/2 = SubResource("TileSetAtlasSource_ice8p")
 [node name="Level1" type="Node2D" unique_id=332795906]
 position = Vector2(1, 0)
 script = ExtResource("1_2r1mu")
+metadata/_edit_vertical_guides_ = [-143.0]
 
 [node name="ColorRectSky" type="ColorRect" parent="." unique_id=1091380909]
 offset_left = -78.0
@@ -581,7 +581,6 @@ shape = SubResource("RectangleShape2D_p0ite")
 [node name="Knook" parent="." unique_id=48793376 instance=ExtResource("2_2a4ud")]
 position = Vector2(94, 405)
 melee = ExtResource("3_vs2k0")
-attack_distance = 40.0
 
 [node name="Camera2D" type="Camera2D" parent="Knook" unique_id=1281241282]
 limit_left = 5
@@ -661,7 +660,6 @@ shape = SubResource("RectangleShape2D_asugk")
 
 [node name="Slime" parent="Enemies" unique_id=445005890 instance=ExtResource("48_7ypy2")]
 position = Vector2(491, 287)
-weapon_scene = ExtResource("3_vs2k0")
 
 [node name="Coins" type="Node" parent="." unique_id=1473739431]
 

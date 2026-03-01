@@ -13,7 +13,7 @@ script = ExtResource("1_bg0yx")
 position = Vector2(56, 160)
 shape = SubResource("RectangleShape2D_bg0yx")
 
-[node name="MetalFence" type="Sprite2D" parent="." unique_id=38222040]
+[node name="Sprites" type="Sprite2D" parent="." unique_id=38222040]
 position = Vector2(91.9517, 159.99939)
 rotation = 1.5828729
 scale = Vector2(4.7017474, 2.6702611)
