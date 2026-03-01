@@ -4,7 +4,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.coins = 0
-	$Knook/Camera2D.limit_bottom = 1650
+	#$Knook/Camera2D.limit_bottom = 1650
 	$Knook/Camera2D.limit_right = 15000
 	$Knook/Camera2D.limit_top = -500   # example value
 	$Bumper.visible = false
