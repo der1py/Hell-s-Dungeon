@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bw0u6h4rb22ke" path="res://Assets/Metal/metalFenceAlt.png" id="4_bvjun"]
 [ext_resource type="Texture2D" uid="uid://22cvgnb7rsuj" path="res://Assets/Grass/slice16_16.png" id="4_mu38l"]
 [ext_resource type="Texture2D" uid="uid://x5ceppod1vef" path="res://Assets/Grass/slice03_03.png" id="4_u16l1"]
+[ext_resource type="PackedScene" uid="uid://bc0ohr21oq2po" path="res://boomerang.tscn" id="4_yx7fw"]
 [ext_resource type="Texture2D" uid="uid://c6ppqap7n3ii4" path="res://Assets/Grass/slice17_17.png" id="5_8c1ft"]
 [ext_resource type="Texture2D" uid="uid://5luqglxxu5w0" path="res://Assets/Grass/slice04_04.png" id="5_44q7h"]
 [ext_resource type="Texture2D" uid="uid://cfopaefpm11qj" path="res://Assets/Grass/slice18_18.png" id="6_bw3rl"]
@@ -582,6 +583,7 @@ shape = SubResource("RectangleShape2D_p0ite")
 [node name="Knook" parent="." unique_id=48793376 instance=ExtResource("2_2a4ud")]
 position = Vector2(94, 405)
 melee = ExtResource("3_vs2k0")
+boomerang = ExtResource("4_yx7fw")
 
 [node name="Camera2D" type="Camera2D" parent="Knook" unique_id=1281241282]
 limit_left = 5
