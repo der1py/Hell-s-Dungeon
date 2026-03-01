@@ -187,10 +187,10 @@ func _on_animation_finished(name):
 func _on_fall_zone_body_entered(body):
 	die()
 
-func _on_teleport_area_body_entered(body):
-	position.x = 4600
-	position.y = -2500
-	$Camera2D.limit_right = 5500
+#func _on_teleport_area_body_entered(body):
+	#position.x = 4600
+	#position.y = -2500
+	#$Camera2D.limit_right = 5500
 
 func melee_attack():
 	var attack = melee.instantiate() # instaniate doesnt spawn and add child does
