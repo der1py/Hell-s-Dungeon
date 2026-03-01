@@ -42,11 +42,7 @@ func _physics_process(delta):
 		var to_player = player.global_position - global_position
 		weapon.rotation = to_player.angle()
 		
-		if distance < follow_distance:
-			if can_shoot:
-				pass
-				# shoot()
-			
+		if distance < follow_distance:			
 			direction = sign(player.global_position.x - global_position.x)
 			$AnimatedSprite2D.flip_h = direction < 0
 
@@ -77,21 +73,6 @@ func _on_ShootTimer_timeout():
 func _on_hurt_zone_body_entered(body):
 	if body.is_in_group("player"):
 		body.hp -= 10
-
-func shoot():
-	if not can_shoot or not player or not weapon:
-		return
-
-	can_shoot = false
-
-	var bullet = bullet_scene.instantiate()
-	get_tree().current_scene.add_child(bullet)
-	bullet.global_position = global_position
-	bullet.rotation = (player.global_position - weapon.global_position).angle()
-	# bullet.direction = Vector2.RIGHT.rotated(weapon.rotation)
-
-	await get_tree().create_timer(shoot_cooldown).timeout
-	can_shoot = true
 
 func _on_top_zone_body_entered(body):
 	set_physics_process(false)
