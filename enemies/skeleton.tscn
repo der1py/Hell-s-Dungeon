@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b44pseb5wfn1q"]
 
-[ext_resource type="Script" uid="uid://ckjjwd1y5at18" path="res://enemy.gd" id="1_uaaco"]
+[ext_resource type="Script" uid="uid://dl7kpnnfknfbr" path="res://enemies/skeleton.gd" id="1_xetf2"]
 [ext_resource type="Texture2D" uid="uid://ll7uok5q6fqh" path="res://Assets/Enemies/Skeleton/skele attack 1.png" id="2_xetf2"]
 [ext_resource type="Texture2D" uid="uid://dec818adef8d" path="res://Assets/Enemies/Skeleton/skeleton_idle.png" id="2_ymvsc"]
 [ext_resource type="Texture2D" uid="uid://csjge0f4sjau7" path="res://Assets/Enemies/Skeleton/skele attack 2.png" id="3_bwpjj"]
@@ -67,7 +67,7 @@ size = Vector2(31, 52)
 [node name="Skeleton" type="CharacterBody2D" unique_id=1854339126]
 collision_layer = 8
 collision_mask = 67
-script = ExtResource("1_uaaco")
+script = ExtResource("1_xetf2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=873667669]
 position = Vector2(1.5219731, -1.3919923)
