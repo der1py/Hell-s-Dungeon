@@ -493,8 +493,10 @@ position = Vector2(10434, 3000)
 collision_layer = 0
 
 [node name="Bumper" type="TileMap" parent="." unique_id=14501703]
+visible = false
 tile_set = SubResource("TileSet_nnubt")
 format = 2
+layer_0/tile_data = PackedInt32Array(458759, 1, 0, 458761, 1, 0, 458775, 1, 0, 458781, 1, 0, 458822, 1, 0, 458825, 1, 0, 1376327, 1, 0, 1376313, 1, 0, 1376306, 1, 0, 1376310, 1, 0, 3670039, 1, 0, 3670055, 1, 0, 3932210, 1, 0, 3670082, 1, 0)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=196681011]
 script = ExtResource("59_uuueg")
