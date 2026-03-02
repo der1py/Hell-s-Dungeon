@@ -20,6 +20,7 @@ func setup(p_direction: Vector2, p_player: Node2D):
 	player = p_player
 
 func _physics_process(delta):
+	player.can_melee = false # cant pvp without ur sword bro
 	if not returning:
 		# Forward movement
 		var curve = Vector2(-direction.y, direction.x) * curve_strength

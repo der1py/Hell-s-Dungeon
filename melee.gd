@@ -3,6 +3,7 @@ extends Area2D
 @export var damage: int = 20
 @export var lifetime: float = 0.15
 var targetGroup = "" # set this bro
+var trueDamage = true
 
 
 var hit_targets = []
@@ -16,8 +17,10 @@ func _ready():
 func _on_body_entered(body):
 	if body in hit_targets:
 		return
-
-	if body.has_method("take_damage") and body.is_in_group(targetGroup):
+	if trueDamage and body.has_method("true_damage") and body.is_in_group(targetGroup):
+		body.true_damage(damage)
+		hit_targets.append(body)
+	elif body.has_method("take_damage") and body.is_in_group(targetGroup):
 		body.take_damage(damage)
 		hit_targets.append(body)
 
