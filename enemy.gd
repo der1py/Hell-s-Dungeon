@@ -133,7 +133,7 @@ func die():
 	if $TopZone:
 		$TopZone.queue_free()
 	position.y += 10
-	$AnimatedSprite2D.play("squashed")
+	$AnimatedSprite2D.play("die")
 	await get_tree().create_timer(1.5).timeout
 	queue_free()
 

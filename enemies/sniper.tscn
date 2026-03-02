@@ -55,7 +55,7 @@ script = ExtResource("1_n5cm8")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=873667669]
 scale = Vector2(0.48000002, 0.48000002)
 sprite_frames = SubResource("SpriteFrames_mf88q")
-animation = &"crawl"
+animation = &"die"
 autoplay = "crawl"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2062700937]
