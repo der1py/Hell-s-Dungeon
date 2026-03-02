@@ -43,15 +43,16 @@ theme_override_fonts/font = ExtResource("2_4hy44")
 theme_override_font_sizes/font_size = 40
 text = "left click - attack
 right click - throw sword
-WAD - move and jump
-S or space - dash"
+WAD - move and jump (u can double jump)
+S or space - dash
+u heal a bit when u kill an enemy"
 
 [node name="Button" type="Button" parent="." unique_id=1905031656]
 layout_mode = 0
-offset_left = 396.0
-offset_top = 447.0
-offset_right = 790.0
-offset_bottom = 501.0
+offset_left = 393.0
+offset_top = 491.0
+offset_right = 787.0
+offset_bottom = 545.0
 theme_override_colors/font_color = Color(0, 0.9791575, 0.61266917, 1)
 theme_override_colors/font_hover_color = Color(0.662745, 1, 0.635294, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)

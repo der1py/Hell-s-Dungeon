@@ -17,6 +17,7 @@ var has_melee = true # has melee means it can melee, can melee is like state or 
 var default_time = 0.2 # default action time
 var shoot_timer
 var attack_state = false # fake state cuz this shi due in 1hr...
+var is_dead = false
 
 @export var direction = -1 #1 is right, -1 is left
 @export var follow_distance = 600
@@ -125,6 +126,10 @@ func _on_hurt_zone_body_entered(body):
 	# 	body.take_damage(damage)
 
 func die():
+	if (is_dead):
+		return
+	is_dead = true
+	player.hp = max(player.hp + 20, 0) # penalize player for killing enemy, since they should be avoiding it instead. Also makes the game more fun that way ngl
 	set_physics_process(false)
 	if shoot_timer:
 		shoot_timer.stop()
