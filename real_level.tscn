@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b44pseb5wfn1q" path="res://enemies/skeleton.tscn" id="27_jwqqg"]
 [ext_resource type="PackedScene" uid="uid://dpm02hsadsnhh" path="res://enemies/sniper.tscn" id="28_seli0"]
 [ext_resource type="PackedScene" uid="uid://dbfxiv3kw7kax" path="res://boss.tscn" id="29_seli0"]
+[ext_resource type="PackedScene" uid="uid://bmqto0kl4rwv3" path="res://heal_pot.tscn" id="30_4iiuy"]
 [ext_resource type="Texture2D" uid="uid://ebt8sdjel6i6" path="res://Assets/Metal/slice01_01.png" id="30_tp5fj"]
 [ext_resource type="Texture2D" uid="uid://bqg1d0jqpofde" path="res://Assets/Metal/slice02_02.png" id="31_yb8rv"]
 [ext_resource type="Texture2D" uid="uid://0ouov5bqo8te" path="res://Assets/wallbg/1_lwall.png" id="32_2svtb"]
@@ -475,6 +476,27 @@ position = Vector2(2601, 6925)
 [node name="Skeleton20" parent="Enemies" unique_id=993058652 instance=ExtResource("27_jwqqg")]
 position = Vector2(2165, 6922)
 
+[node name="Heal" parent="Enemies" unique_id=531331224 instance=ExtResource("30_4iiuy")]
+position = Vector2(5163, 482)
+
+[node name="Heal2" parent="Enemies" unique_id=1609983158 instance=ExtResource("30_4iiuy")]
+position = Vector2(811, 1448)
+
+[node name="Heal3" parent="Enemies" unique_id=157162658 instance=ExtResource("30_4iiuy")]
+position = Vector2(4565, 3908)
+
+[node name="Heal4" parent="Enemies" unique_id=1506257284 instance=ExtResource("30_4iiuy")]
+position = Vector2(4904, 6946)
+
+[node name="Heal5" parent="Enemies" unique_id=288246302 instance=ExtResource("30_4iiuy")]
+position = Vector2(5357, 6930)
+
+[node name="Heal6" parent="Enemies" unique_id=19300464 instance=ExtResource("30_4iiuy")]
+position = Vector2(1181, 6977)
+
+[node name="Heal7" parent="Enemies" unique_id=328793723 instance=ExtResource("30_4iiuy")]
+position = Vector2(587, 6971)
+
 [node name="Coins" type="Node" parent="." unique_id=1473739431]
 
 [node name="Coin" parent="Coins" unique_id=520442865 instance=ExtResource("55_yhp63")]
@@ -746,10 +768,10 @@ scale = Vector2(0.155, 0.155)
 texture = ExtResource("33_373qg")
 
 [node name="mist" type="TextureRect" parent="." unique_id=142218201]
-offset_left = -203.0
-offset_top = -1664.0
-offset_right = 5963.0
-offset_bottom = 3033.0
+offset_left = -227.0
+offset_top = -1656.0
+offset_right = 5939.0
+offset_bottom = 3041.0
 texture = ExtResource("34_1sxb4")
 
 [node name="hellbg" type="TextureRect" parent="." unique_id=903598241]
