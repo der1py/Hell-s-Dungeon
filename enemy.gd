@@ -12,8 +12,11 @@ var weapon: Node2D
 var can_melee = true
 var melee_cooldown = 0.5
 var attack_range = 40
+var has_melee = true # has melee means it can melee, can melee is like state or wtv
 
+var default_time = 0.2 # default action time
 var shoot_timer
+var attack_state = false # fake state cuz this shi due in 1hr...
 
 @export var direction = -1 #1 is right, -1 is left
 @export var follow_distance = 600
@@ -38,13 +41,29 @@ func _ready():
 		add_child(shoot_timer)
 		shoot_timer.timeout.connect(_on_ShootTimer_timeout)
 
-	$AnimatedSprite2D.flip_h = false if direction == -1 else true
-	
+	$AnimatedSprite2D.flip_h = false if velocity.x < 0 else true
+
 func _physics_process(delta):
 	
 	#fall with gravity
 	velocity.y += gravity * delta
 	
+	# movement logic
+	if not attack_state:
+		update_movement(delta)
+	
+	animate()
+
+	#actually move the object
+	move_and_slide()
+
+func animate():
+	if attack_state:
+		$AnimatedSprite2D.play("attack")
+	else:
+		$AnimatedSprite2D.play("crawl")
+
+func update_movement(delta):
 	# Follow player if close enough
 	if player:
 		var distance = global_position.distance_to(player.global_position)
@@ -62,12 +81,12 @@ func _physics_process(delta):
 			
 		# 	if can_shoot and not $ShootTimer.is_stopped():
 		# 		$ShootTimer.stop()
+		if has_melee:
+			# try to melee attack if in range 
+			melee_attack()
 	
 	#move left/right
 	velocity.x = speed * direction
-	
-	#actually move the object
-	move_and_slide()
 
 # called periodically by the shoot timer
 func _on_ShootTimer_timeout():
@@ -75,6 +94,7 @@ func _on_ShootTimer_timeout():
 		return
 	
 	var bullet = bullet_scene.instantiate()
+	bullet.damage = damage
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = global_position
 	bullet.rotation = (player.global_position - global_position).angle()
@@ -87,12 +107,16 @@ func melee_attack():
 	if distance <= attack_range:
 		can_melee = false
 		
+		attack_state = true
 		var attack = melee.instantiate()
 		attack.targetGroup = "player"
+		attack.damage = damage
 		get_tree().current_scene.add_child(attack)
 		attack.global_position = global_position
 		attack.rotation = (player.global_position - global_position).angle()
-		await get_tree().create_timer(melee_cooldown).timeout
+		await get_tree().create_timer(default_time).timeout
+		attack_state = false
+		await get_tree().create_timer(max(melee_cooldown - default_time, 0)).timeout
 		can_melee = true
 
 func _on_hurt_zone_body_entered(body):
@@ -102,6 +126,8 @@ func _on_hurt_zone_body_entered(body):
 
 func die():
 	set_physics_process(false)
+	if shoot_timer:
+		shoot_timer.stop()
 	if $HurtZone:
 		$HurtZone.queue_free()
 	if $TopZone:

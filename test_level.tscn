@@ -54,8 +54,12 @@
 [ext_resource type="Texture2D" uid="uid://7rgfedkhdirr" path="res://Assets/Grass/slice12_12.png" id="52_6k8xx"]
 [ext_resource type="Texture2D" uid="uid://dhxcw2ve8qm64" path="res://Assets/Grass/slice13_13.png" id="53_cebhg"]
 [ext_resource type="Texture2D" uid="uid://brtwkg81qvpp1" path="res://Assets/World Extras/spikes.png" id="54_2c5ja"]
-[ext_resource type="PackedScene" uid="uid://dkf0mf2wgxa2p" path="res://coin.tscn" id="59_jasil"]
+[ext_resource type="PackedScene" uid="uid://b44pseb5wfn1q" path="res://enemies/skeleton.tscn" id="55_5womw"]
+[ext_resource type="Script" uid="uid://dl7kpnnfknfbr" path="res://enemies/skeleton.gd" id="56_cnc64"]
+[ext_resource type="PackedScene" uid="uid://dusxl60cwi65e" path="res://weapon.tscn" id="56_urakn"]
+[ext_resource type="Script" uid="uid://dl5i3jjyjmvup" path="res://enemies/sniper.gd" id="58_6rgoy"]
 [ext_resource type="Texture2D" uid="uid://cfni7omjravf" path="res://Assets/Bumper.png" id="60_thv1v"]
+[ext_resource type="PackedScene" uid="uid://dpm02hsadsnhh" path="res://enemies/sniper.tscn" id="61_7xfod"]
 [ext_resource type="Texture2D" uid="uid://bqecc3k2wrrxp" path="res://Assets/BumperNew.png" id="61_ysuix"]
 [ext_resource type="Texture2D" uid="uid://bwkswpj1tveak" path="res://Assets/bumper_half.png" id="62_tphh4"]
 [ext_resource type="Script" uid="uid://caekkjm1n7kiq" path="res://HUD.gd" id="63_hgoki"]
@@ -665,97 +669,22 @@ shape = SubResource("RectangleShape2D_asugk")
 
 [node name="Enemies" type="Node" parent="." unique_id=1276458933]
 
-[node name="Coins" type="Node" parent="." unique_id=1473739431]
+[node name="Skeleton" parent="Enemies" unique_id=1854339126 instance=ExtResource("55_5womw")]
+position = Vector2(413, 300)
+script = ExtResource("56_cnc64")
+skeleton_speed = 132
+skeleton_hp = 50
+skeleton_damage = 15
+melee = ExtResource("3_rpwbw")
 
-[node name="Coin" parent="Coins" unique_id=520442865 instance=ExtResource("59_jasil")]
-position = Vector2(873, 64)
-
-[node name="Coin2" parent="Coins" unique_id=284789681 instance=ExtResource("59_jasil")]
-position = Vector2(9096, 3346)
-
-[node name="Coin3" parent="Coins" unique_id=1386903090 instance=ExtResource("59_jasil")]
-position = Vector2(3929, 3064)
-
-[node name="Coin4" parent="Coins" unique_id=191559800 instance=ExtResource("59_jasil")]
-position = Vector2(3772, 406)
-
-[node name="Coin5" parent="Coins" unique_id=1847971500 instance=ExtResource("59_jasil")]
-position = Vector2(3463, 406)
-
-[node name="Coin6" parent="Coins" unique_id=462201748 instance=ExtResource("59_jasil")]
-position = Vector2(2679, -310)
-
-[node name="Coin7" parent="Coins" unique_id=399603600 instance=ExtResource("59_jasil")]
-position = Vector2(4175, 1173)
-
-[node name="Coin8" parent="Coins" unique_id=120303485 instance=ExtResource("59_jasil")]
-position = Vector2(3039, 1178)
-
-[node name="Coin9" parent="Coins" unique_id=1659291444 instance=ExtResource("59_jasil")]
-position = Vector2(2204, 1178)
-
-[node name="Coin10" parent="Coins" unique_id=393911908 instance=ExtResource("59_jasil")]
-position = Vector2(1246, 1259)
-
-[node name="Coin11" parent="Coins" unique_id=636839089 instance=ExtResource("59_jasil")]
-position = Vector2(1530, 2727)
-
-[node name="Coin12" parent="Coins" unique_id=640746224 instance=ExtResource("59_jasil")]
-position = Vector2(3166, 2659)
-
-[node name="Coin13" parent="Coins" unique_id=196349091 instance=ExtResource("59_jasil")]
-position = Vector2(2630, 2655)
-
-[node name="Coin14" parent="Coins" unique_id=1818403144 instance=ExtResource("59_jasil")]
-position = Vector2(3530, 2863)
-
-[node name="Coin15" parent="Coins" unique_id=198051268 instance=ExtResource("59_jasil")]
-position = Vector2(4958, 2863)
-
-[node name="Coin16" parent="Coins" unique_id=1862831454 instance=ExtResource("59_jasil")]
-position = Vector2(4472, 2587)
-
-[node name="Coin17" parent="Coins" unique_id=447222222 instance=ExtResource("59_jasil")]
-position = Vector2(5622, 2450)
-
-[node name="Coin18" parent="Coins" unique_id=198142827 instance=ExtResource("59_jasil")]
-position = Vector2(5430, 2757)
-
-[node name="Coin19" parent="Coins" unique_id=1505289533 instance=ExtResource("59_jasil")]
-position = Vector2(4588, 3281)
-
-[node name="Coin20" parent="Coins" unique_id=748028869 instance=ExtResource("59_jasil")]
-position = Vector2(5934, 3357)
-
-[node name="Coin21" parent="Coins" unique_id=1492559846 instance=ExtResource("59_jasil")]
-position = Vector2(7128, 3362)
-
-[node name="Coin22" parent="Coins" unique_id=474145572 instance=ExtResource("59_jasil")]
-position = Vector2(8232, 3291)
-
-[node name="Coin23" parent="Coins" unique_id=253839202 instance=ExtResource("59_jasil")]
-position = Vector2(4422, 419)
-
-[node name="Coin24" parent="Coins" unique_id=1453997784 instance=ExtResource("59_jasil")]
-position = Vector2(4032, 2855)
-
-[node name="Coin25" parent="Coins" unique_id=531742954 instance=ExtResource("59_jasil")]
-position = Vector2(9949, 3377)
-
-[node name="Coin26" parent="Coins" unique_id=63781597 instance=ExtResource("59_jasil")]
-position = Vector2(10365, 3371)
-
-[node name="Coin27" parent="Coins" unique_id=978009879 instance=ExtResource("59_jasil")]
-position = Vector2(10814, 3063)
-
-[node name="Coin28" parent="Coins" unique_id=1174649127 instance=ExtResource("59_jasil")]
-position = Vector2(12228, 2998)
-
-[node name="Coin29" parent="Coins" unique_id=1099716376 instance=ExtResource("59_jasil")]
-position = Vector2(11343, 2930)
-
-[node name="Coin30" parent="Coins" unique_id=2125463167 instance=ExtResource("59_jasil")]
-position = Vector2(10434, 3000)
+[node name="Sniper" parent="Enemies" unique_id=1978963174 instance=ExtResource("61_7xfod")]
+position = Vector2(759, 440)
+script = ExtResource("58_6rgoy")
+sniper_speed = 30
+sniper_hp = 50
+sniper_damage = 20
+sniper_shoot_cooldown = 3
+bullet_scene = ExtResource("56_urakn")
 
 [node name="TeleportArea" type="Area2D" parent="." unique_id=1772376046]
 collision_layer = 0
@@ -831,34 +760,4 @@ text = "Leap of faith!"
 [connection signal="body_entered" from="ResetCameraLimitFactory" to="." method="_on_reset_camera_limit_factory_body_entered"]
 [connection signal="body_entered" from="ResetCameraLimitCave" to="." method="_on_reset_camera_limit_cave_body_entered"]
 [connection signal="body_entered" from="FallZone" to="Knook" method="_on_fall_zone_body_entered"]
-[connection signal="body_entered" from="Coins/Coin" to="Coins/Coin" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin2" to="Coins/Coin2" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin3" to="Coins/Coin3" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin4" to="Coins/Coin4" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin5" to="Coins/Coin5" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin6" to="Coins/Coin6" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin7" to="Coins/Coin7" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin8" to="Coins/Coin8" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin9" to="Coins/Coin9" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin10" to="Coins/Coin10" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin11" to="Coins/Coin11" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin12" to="Coins/Coin12" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin13" to="Coins/Coin13" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin14" to="Coins/Coin14" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin15" to="Coins/Coin15" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin16" to="Coins/Coin16" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin17" to="Coins/Coin17" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin18" to="Coins/Coin18" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin19" to="Coins/Coin19" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin20" to="Coins/Coin20" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin21" to="Coins/Coin21" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin22" to="Coins/Coin22" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin23" to="Coins/Coin23" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin24" to="Coins/Coin24" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin25" to="Coins/Coin25" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin26" to="Coins/Coin26" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin27" to="Coins/Coin27" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin28" to="Coins/Coin28" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin29" to="Coins/Coin29" method="_on_body_entered"]
-[connection signal="body_entered" from="Coins/Coin30" to="Coins/Coin30" method="_on_body_entered"]
 [connection signal="body_entered" from="TeleportArea" to="Knook" method="_on_teleport_area_body_entered"]

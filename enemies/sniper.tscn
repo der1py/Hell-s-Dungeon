@@ -1,25 +1,16 @@
-[gd_scene format=3 uid="uid://b44pseb5wfn1q"]
+[gd_scene format=3 uid="uid://dpm02hsadsnhh"]
 
-[ext_resource type="Script" uid="uid://ckjjwd1y5at18" path="res://enemy.gd" id="1_uaaco"]
-[ext_resource type="Texture2D" uid="uid://boucnw6hf1s8b" path="res://Assets/Dead Rat/mouse_dead.png" id="2_a8xgm"]
-[ext_resource type="Texture2D" uid="uid://dec818adef8d" path="res://Assets/Enemies/Skeleton/skeleton_idle.png" id="2_ymvsc"]
-[ext_resource type="Texture2D" uid="uid://0wikbtis3ci8" path="res://Assets/Enemies/Slime/slime_dead.png" id="3_rwpf0"]
-[ext_resource type="Texture2D" uid="uid://tpa6qrwn6hhi" path="res://Assets/Enemies/Slime/slime_hit.png" id="4_ew5mc"]
-[ext_resource type="Texture2D" uid="uid://df7wd8xysik2y" path="res://Assets/Enemies/Slime/slime_squashed.png" id="5_vqc8v"]
+[ext_resource type="Script" uid="uid://ckjjwd1y5at18" path="res://enemy.gd" id="1_n5cm8"]
+[ext_resource type="Texture2D" uid="uid://dec818adef8d" path="res://Assets/Enemies/Skeleton/skeleton_idle.png" id="2_8h2tm"]
+[ext_resource type="Texture2D" uid="uid://0wikbtis3ci8" path="res://Assets/Enemies/Slime/slime_dead.png" id="3_cfgqn"]
+[ext_resource type="Texture2D" uid="uid://tpa6qrwn6hhi" path="res://Assets/Enemies/Slime/slime_hit.png" id="4_1d20f"]
+[ext_resource type="Texture2D" uid="uid://df7wd8xysik2y" path="res://Assets/Enemies/Slime/slime_squashed.png" id="5_12h6m"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mf88q"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_a8xgm")
-}],
-"loop": true,
-"name": &"attack",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_ymvsc")
+"texture": ExtResource("2_8h2tm")
 }],
 "loop": true,
 "name": &"crawl",
@@ -27,7 +18,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_rwpf0")
+"texture": ExtResource("3_cfgqn")
 }],
 "loop": true,
 "name": &"die",
@@ -35,7 +26,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_ew5mc")
+"texture": ExtResource("4_1d20f")
 }],
 "loop": true,
 "name": &"hit",
@@ -43,7 +34,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_vqc8v")
+"texture": ExtResource("5_12h6m")
 }],
 "loop": true,
 "name": &"squashed",
@@ -56,14 +47,12 @@ size = Vector2(31, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pbdpi"]
 size = Vector2(31, 52)
 
-[node name="Skeleton" type="CharacterBody2D" unique_id=1854339126]
+[node name="Sniper" type="CharacterBody2D" unique_id=1854339126]
 collision_layer = 8
 collision_mask = 67
-script = ExtResource("1_uaaco")
+script = ExtResource("1_n5cm8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=873667669]
-position = Vector2(1.5219731, -1.3919923)
-scale = Vector2(0.97912097, 1.0966152)
 sprite_frames = SubResource("SpriteFrames_mf88q")
 animation = &"crawl"
 autoplay = "crawl"

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c07cqc8h2ntxb"]
 
 [ext_resource type="Script" uid="uid://ckjjwd1y5at18" path="res://enemy.gd" id="1_3yqyl"]
+[ext_resource type="Texture2D" uid="uid://boucnw6hf1s8b" path="res://Assets/Dead Rat/mouse_dead.png" id="2_3yqyl"]
 [ext_resource type="Texture2D" uid="uid://dec818adef8d" path="res://Assets/Enemies/Skeleton/skeleton_idle.png" id="2_epg4t"]
 [ext_resource type="Texture2D" uid="uid://0wikbtis3ci8" path="res://Assets/Enemies/Slime/slime_dead.png" id="5_pwjut"]
 [ext_resource type="Texture2D" uid="uid://tpa6qrwn6hhi" path="res://Assets/Enemies/Slime/slime_hit.png" id="6_n0g06"]
@@ -8,6 +9,14 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mf88q"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3yqyl")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_epg4t")
@@ -56,8 +65,10 @@ collision_mask = 67
 script = ExtResource("1_3yqyl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=873667669]
+position = Vector2(13.999998, -27)
+scale = Vector2(0.640625, 0.6796875)
 sprite_frames = SubResource("SpriteFrames_mf88q")
-animation = &"crawl"
+animation = &"attack"
 autoplay = "crawl"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2062700937]
