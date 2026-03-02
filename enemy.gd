@@ -126,6 +126,8 @@ func _on_hurt_zone_body_entered(body):
 
 func die():
 	set_physics_process(false)
+	if shoot_timer:
+		shoot_timer.stop()
 	if $HurtZone:
 		$HurtZone.queue_free()
 	if $TopZone:

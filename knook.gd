@@ -17,6 +17,8 @@ enum STATES { IDLE, DASHING, AIR, WALK, ATTACK1, ATTACK2, DEAD }
 var state = STATES.IDLE
 var iframe = false
 var iframe_time = 0.5
+var melee_damage = 40
+var ranged_damage = 25
 
 var attack_range = 40
 
@@ -192,21 +194,45 @@ func _on_fall_zone_body_entered(body):
 func melee_attack():
 	var attack = melee.instantiate() # instaniate doesnt spawn and add child does
 	attack.targetGroup = "enemy"
+	attack.damage = melee_damage
 	var direction = (1 if $Sprites.flip_h == false else -1)
 	attack.global_position = global_position + Vector2(direction * attack_distance, 100)
 	attack.set_facing(global_position.direction_to(get_global_mouse_position()))
 	get_tree().current_scene.add_child(attack)
 
+# func boomerang_attack():
+# 	var sword = boomerang.instantiate()
+# 	sword.targetGroup = "enemy"
+# 	sword.global_position = global_position
+
+# 	var dir = global_position.direction_to(get_global_mouse_position())
+# 	sword.setup(dir, self)
+
+# 	get_tree().current_scene.add_child(sword)
 func boomerang_attack():
+	if not boomerang:
+		return  # safety check
+
+	# Instantiate boomerang scene
 	var sword = boomerang.instantiate()
 	sword.targetGroup = "enemy"
-	sword.global_position = global_position
+	sword.damage = ranged_damage
 
-	var dir = global_position.direction_to(get_global_mouse_position())
+	# Compute direction from player to mouse
+	var dir = (get_global_mouse_position() - global_position).normalized()
+
+	# Optional: spawn slightly in front of player
+	var spawn_offset = 20
+	sword.global_position = global_position + dir * spawn_offset
+
+	# Rotate boomerang to face the mouse
+	sword.rotation = dir.angle()
+
+	# Setup internal variables
 	sword.setup(dir, self)
 
+	# Add to scene
 	get_tree().current_scene.add_child(sword)
-
 func die():
 	state = STATES.DEAD
 	set_physics_process(false)

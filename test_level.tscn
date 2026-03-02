@@ -56,7 +56,10 @@
 [ext_resource type="Texture2D" uid="uid://brtwkg81qvpp1" path="res://Assets/World Extras/spikes.png" id="54_2c5ja"]
 [ext_resource type="PackedScene" uid="uid://b44pseb5wfn1q" path="res://enemies/skeleton.tscn" id="55_5womw"]
 [ext_resource type="Script" uid="uid://dl7kpnnfknfbr" path="res://enemies/skeleton.gd" id="56_cnc64"]
+[ext_resource type="PackedScene" uid="uid://dusxl60cwi65e" path="res://weapon.tscn" id="56_urakn"]
+[ext_resource type="Script" uid="uid://dl5i3jjyjmvup" path="res://enemies/sniper.gd" id="58_6rgoy"]
 [ext_resource type="Texture2D" uid="uid://cfni7omjravf" path="res://Assets/Bumper.png" id="60_thv1v"]
+[ext_resource type="PackedScene" uid="uid://dpm02hsadsnhh" path="res://enemies/sniper.tscn" id="61_7xfod"]
 [ext_resource type="Texture2D" uid="uid://bqecc3k2wrrxp" path="res://Assets/BumperNew.png" id="61_ysuix"]
 [ext_resource type="Texture2D" uid="uid://bwkswpj1tveak" path="res://Assets/bumper_half.png" id="62_tphh4"]
 [ext_resource type="Script" uid="uid://caekkjm1n7kiq" path="res://HUD.gd" id="63_hgoki"]
@@ -669,10 +672,19 @@ shape = SubResource("RectangleShape2D_asugk")
 [node name="Skeleton" parent="Enemies" unique_id=1854339126 instance=ExtResource("55_5womw")]
 position = Vector2(413, 300)
 script = ExtResource("56_cnc64")
-skeleton_speed = 50
-skeleton_hp = 60
+skeleton_speed = 132
+skeleton_hp = 50
 skeleton_damage = 15
 melee = ExtResource("3_rpwbw")
+
+[node name="Sniper" parent="Enemies" unique_id=1978963174 instance=ExtResource("61_7xfod")]
+position = Vector2(759, 440)
+script = ExtResource("58_6rgoy")
+sniper_speed = 30
+sniper_hp = 50
+sniper_damage = 20
+sniper_shoot_cooldown = 3
+bullet_scene = ExtResource("56_urakn")
 
 [node name="TeleportArea" type="Area2D" parent="." unique_id=1772376046]
 collision_layer = 0

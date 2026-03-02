@@ -1,6 +1,6 @@
 extends Enemy
 
-@export var skeleton_speed = 300
+@export var skeleton_speed = 132
 @export var skeleton_hp = 50
 @export var skeleton_damage = 15
 

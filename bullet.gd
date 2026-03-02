@@ -8,7 +8,6 @@ var damage = 10
 func _ready():
 	body_entered.connect(_on_hurt_zone_body_entered)
 
-
 func _physics_process(delta):
 	direction = Vector2.RIGHT.rotated(rotation)
 	global_position += direction * speed * delta
