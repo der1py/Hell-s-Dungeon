@@ -45,14 +45,15 @@ text = "left click - attack
 right click - throw sword
 WAD - move and jump (u can double jump)
 S or space - dash
-u heal a bit when u kill an enemy"
+u heal a bit when u kill an enemy
+kill cereberus (the big dog at the end) to win"
 
 [node name="Button" type="Button" parent="." unique_id=1905031656]
 layout_mode = 0
-offset_left = 393.0
-offset_top = 491.0
-offset_right = 787.0
-offset_bottom = 545.0
+offset_left = 383.0
+offset_top = 536.0
+offset_right = 777.0
+offset_bottom = 590.0
 theme_override_colors/font_color = Color(0, 0.9791575, 0.61266917, 1)
 theme_override_colors/font_hover_color = Color(0.662745, 1, 0.635294, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)

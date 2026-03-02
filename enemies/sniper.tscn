@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dpm02hsadsnhh"]
 
-[ext_resource type="Script" uid="uid://ckjjwd1y5at18" path="res://enemy.gd" id="1_n5cm8"]
+[ext_resource type="Script" uid="uid://dl5i3jjyjmvup" path="res://enemies/sniper.gd" id="1_8h2tm"]
+[ext_resource type="PackedScene" uid="uid://dusxl60cwi65e" path="res://weapon.tscn" id="2_cfgqn"]
 [ext_resource type="Texture2D" uid="uid://mjsh37dwk6uq" path="res://Assets/Enemies/Demon/demon_idle.png" id="2_n5cm8"]
 [ext_resource type="Texture2D" uid="uid://2o1qs0sn8kh0" path="res://Assets/Enemies/Demon/demon die.png" id="3_8h2tm"]
 [ext_resource type="Texture2D" uid="uid://tpa6qrwn6hhi" path="res://Assets/Enemies/Slime/slime_hit.png" id="4_1d20f"]
@@ -50,7 +51,8 @@ size = Vector2(31, 52)
 [node name="Sniper" type="CharacterBody2D" unique_id=1854339126]
 collision_layer = 8
 collision_mask = 67
-script = ExtResource("1_n5cm8")
+script = ExtResource("1_8h2tm")
+bullet_scene = ExtResource("2_cfgqn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=873667669]
 scale = Vector2(0.48000002, 0.48000002)

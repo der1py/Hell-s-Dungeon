@@ -11,8 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bol0xc1xooa6x" path="res://Assets/wallbg/fire.png" id="24_2svtb"]
 [ext_resource type="PackedScene" uid="uid://b44pseb5wfn1q" path="res://enemies/skeleton.tscn" id="27_jwqqg"]
 [ext_resource type="PackedScene" uid="uid://dpm02hsadsnhh" path="res://enemies/sniper.tscn" id="28_seli0"]
-[ext_resource type="PackedScene" uid="uid://dusxl60cwi65e" path="res://weapon.tscn" id="29_4iiuy"]
-[ext_resource type="Script" uid="uid://dl5i3jjyjmvup" path="res://enemies/sniper.gd" id="29_y0o6k"]
+[ext_resource type="PackedScene" uid="uid://dbfxiv3kw7kax" path="res://boss.tscn" id="29_seli0"]
 [ext_resource type="Texture2D" uid="uid://ebt8sdjel6i6" path="res://Assets/Metal/slice01_01.png" id="30_tp5fj"]
 [ext_resource type="Texture2D" uid="uid://bqg1d0jqpofde" path="res://Assets/Metal/slice02_02.png" id="31_yb8rv"]
 [ext_resource type="Texture2D" uid="uid://0ouov5bqo8te" path="res://Assets/wallbg/1_lwall.png" id="32_2svtb"]
@@ -370,32 +369,111 @@ shape = SubResource("RectangleShape2D_cw201")
 
 [node name="Skeleton5" parent="Enemies" unique_id=1854339126 instance=ExtResource("27_jwqqg")]
 position = Vector2(4624, 488)
-melee = ExtResource("3_6n670")
 
 [node name="Skeleton" parent="Enemies" unique_id=1921309564 instance=ExtResource("27_jwqqg")]
 position = Vector2(432, 208)
-melee = ExtResource("3_6n670")
 
 [node name="Skeleton2" parent="Enemies" unique_id=1877558975 instance=ExtResource("27_jwqqg")]
 position = Vector2(896, 512)
-melee = ExtResource("3_6n670")
 
 [node name="Skeleton3" parent="Enemies" unique_id=618308607 instance=ExtResource("27_jwqqg")]
 position = Vector2(1240, 512)
-melee = ExtResource("3_6n670")
 
 [node name="Skeleton4" parent="Enemies" unique_id=1596746895 instance=ExtResource("27_jwqqg")]
 position = Vector2(2304, 512)
-melee = ExtResource("3_6n670")
 
 [node name="Sniper" parent="Enemies" unique_id=838388316 instance=ExtResource("28_seli0")]
 position = Vector2(2728, 352)
-script = ExtResource("29_y0o6k")
-sniper_speed = 30
-sniper_hp = 50
-sniper_damage = 20
-sniper_shoot_cooldown = 3
-bullet_scene = ExtResource("29_4iiuy")
+
+[node name="Sniper2" parent="Enemies" unique_id=191327029 instance=ExtResource("28_seli0")]
+position = Vector2(3400, 1200)
+
+[node name="Boss" parent="Enemies" unique_id=797871086 instance=ExtResource("29_seli0")]
+position = Vector2(2375, 6795)
+
+[node name="Sniper3" parent="Enemies" unique_id=308083944 instance=ExtResource("28_seli0")]
+position = Vector2(1148, 1430)
+
+[node name="Sniper4" parent="Enemies" unique_id=1281365418 instance=ExtResource("28_seli0")]
+position = Vector2(1912, 1420)
+
+[node name="Sniper5" parent="Enemies" unique_id=480072725 instance=ExtResource("28_seli0")]
+position = Vector2(2759, 1380)
+
+[node name="Sniper6" parent="Enemies" unique_id=39588093 instance=ExtResource("28_seli0")]
+position = Vector2(88, 1455)
+
+[node name="Skeleton6" parent="Enemies" unique_id=718347049 instance=ExtResource("27_jwqqg")]
+position = Vector2(275, 1474)
+
+[node name="Skeleton7" parent="Enemies" unique_id=1330448351 instance=ExtResource("27_jwqqg")]
+position = Vector2(1566, 1451)
+
+[node name="Skeleton8" parent="Enemies" unique_id=1332357963 instance=ExtResource("27_jwqqg")]
+position = Vector2(3103, 1430)
+
+[node name="Skeleton9" parent="Enemies" unique_id=1472894876 instance=ExtResource("27_jwqqg")]
+position = Vector2(4560, 1364)
+
+[node name="Skeleton10" parent="Enemies" unique_id=1567861553 instance=ExtResource("27_jwqqg")]
+position = Vector2(3925, 1470)
+
+[node name="Skeleton11" parent="Enemies" unique_id=1611780246 instance=ExtResource("27_jwqqg")]
+position = Vector2(5188, 1453)
+
+[node name="Sniper7" parent="Enemies" unique_id=156597618 instance=ExtResource("28_seli0")]
+position = Vector2(3914, 1469)
+
+[node name="Skeleton12" parent="Enemies" unique_id=1062304056 instance=ExtResource("27_jwqqg")]
+position = Vector2(2327, 1429)
+
+[node name="Skeleton13" parent="Enemies" unique_id=929399092 instance=ExtResource("27_jwqqg")]
+position = Vector2(446, 3848)
+
+[node name="Skeleton14" parent="Enemies" unique_id=1168976410 instance=ExtResource("27_jwqqg")]
+position = Vector2(1069, 3871)
+
+[node name="Skeleton15" parent="Enemies" unique_id=1402652394 instance=ExtResource("27_jwqqg")]
+position = Vector2(765, 3851)
+
+[node name="Sniper8" parent="Enemies" unique_id=1207407501 instance=ExtResource("28_seli0")]
+position = Vector2(2027, 3622)
+
+[node name="Sniper9" parent="Enemies" unique_id=985715626 instance=ExtResource("28_seli0")]
+position = Vector2(893, 3844)
+
+[node name="Sniper10" parent="Enemies" unique_id=2126820593 instance=ExtResource("28_seli0")]
+position = Vector2(3246, 3880)
+
+[node name="Sniper11" parent="Enemies" unique_id=638566351 instance=ExtResource("28_seli0")]
+position = Vector2(3664, 3876)
+
+[node name="Skeleton16" parent="Enemies" unique_id=162645103 instance=ExtResource("27_jwqqg")]
+position = Vector2(3392, 3876)
+
+[node name="Skeleton17" parent="Enemies" unique_id=172178213 instance=ExtResource("27_jwqqg")]
+position = Vector2(3988, 3867)
+
+[node name="Sniper12" parent="Enemies" unique_id=514188706 instance=ExtResource("28_seli0")]
+position = Vector2(4501, 3909)
+
+[node name="Sniper13" parent="Enemies" unique_id=1902621046 instance=ExtResource("28_seli0")]
+position = Vector2(2289, 3625)
+
+[node name="Sniper14" parent="Enemies" unique_id=858092988 instance=ExtResource("28_seli0")]
+position = Vector2(4397, 6906)
+
+[node name="Sniper15" parent="Enemies" unique_id=1746964637 instance=ExtResource("28_seli0")]
+position = Vector2(400, 6950)
+
+[node name="Skeleton18" parent="Enemies" unique_id=464880029 instance=ExtResource("27_jwqqg")]
+position = Vector2(1903, 6931)
+
+[node name="Skeleton19" parent="Enemies" unique_id=1819552552 instance=ExtResource("27_jwqqg")]
+position = Vector2(2601, 6925)
+
+[node name="Skeleton20" parent="Enemies" unique_id=993058652 instance=ExtResource("27_jwqqg")]
+position = Vector2(2165, 6922)
 
 [node name="Coins" type="Node" parent="." unique_id=1473739431]
 
@@ -496,7 +574,7 @@ collision_layer = 0
 visible = false
 tile_set = SubResource("TileSet_nnubt")
 format = 2
-layer_0/tile_data = PackedInt32Array(458759, 1, 0, 458761, 1, 0, 458775, 1, 0, 458781, 1, 0, 458822, 1, 0, 458825, 1, 0, 1376327, 1, 0, 1376313, 1, 0, 1376306, 1, 0, 1376310, 1, 0, 3670039, 1, 0, 3670055, 1, 0, 3932210, 1, 0, 3670082, 1, 0)
+layer_0/tile_data = PackedInt32Array(458759, 1, 0, 458761, 1, 0, 458775, 1, 0, 458781, 1, 0, 458822, 1, 0, 458825, 1, 0, 1376327, 1, 0, 1376313, 1, 0, 1376306, 1, 0, 1376310, 1, 0, 3670039, 1, 0, 3670055, 1, 0, 3932210, 1, 0, 3670082, 1, 0, 1114161, 1, 0, 1114159, 1, 0, 1310782, 1, 0, 1310787, 1, 0, 1376266, 1, 0, 1376261, 1, 0, 3407907, 1, 0, 3407898, 1, 0)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=196681011]
 script = ExtResource("59_uuueg")
