@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxqn2fvf72jxv"]
+[gd_scene format=3 uid="uid://dxqn2fvf72jxv"]
 
-[ext_resource type="Script" path="res://game_over.gd" id="1_0yhmf"]
+[ext_resource type="Script" uid="uid://dswiw7yxkeg0y" path="res://game_over.gd" id="1_0yhmf"]
 [ext_resource type="FontFile" uid="uid://d0e5jl2vay1kx" path="res://Assets/PTSerif-Regular.ttf" id="1_3xnyy"]
 [ext_resource type="FontFile" uid="uid://clbet8ndwcpgt" path="res://Assets/Silkscreen-Regular.ttf" id="3_p3k3p"]
 
-[node name="GameOver" type="Control"]
+[node name="GameOver" type="Control" unique_id=1542789109]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0yhmf")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=555510958]
 layout_mode = 0
 offset_left = -15.0
 offset_top = -10.0
@@ -21,7 +21,7 @@ offset_right = 1172.0
 offset_bottom = 666.0
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=361327554]
 layout_mode = 0
 offset_left = 362.0
 offset_top = 246.0
@@ -32,7 +32,7 @@ theme_override_fonts/font = ExtResource("1_3xnyy")
 theme_override_font_sizes/font_size = 100
 text = "YOU DIED"
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=1110782090]
 layout_mode = 0
 offset_left = 465.0
 offset_top = 412.0
