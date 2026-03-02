@@ -129,7 +129,7 @@ func die():
 	if (is_dead):
 		return
 	is_dead = true
-	player.hp = max(player.hp + 20, 0) # penalize player for killing enemy, since they should be avoiding it instead. Also makes the game more fun that way ngl
+	player.hp = max(player.hp + 10, 0) # penalize player for killing enemy, since they should be avoiding it instead. Also makes the game more fun that way ngl
 	set_physics_process(false)
 	if shoot_timer:
 		shoot_timer.stop()
