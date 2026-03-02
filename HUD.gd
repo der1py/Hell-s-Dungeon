@@ -7,3 +7,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$ProgressBar.value = knook.hp
+	$dashbar.value = (knook.dash_cooldown_timer)
+	$skillbar.value = (knook.rmb_cooldown_timer)
+	$atkbar.value = (knook.melee_cooldown_timer)
+	print(($dashbar.value))
