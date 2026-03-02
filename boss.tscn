@@ -14,11 +14,14 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_skx2t"]
-size = Vector2(58, 52)
+size = Vector2(9.311417, 2.6749344)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bnu1"]
+size = Vector2(131, 101.5)
 
 [node name="Boss" type="CharacterBody2D" unique_id=797871086]
 collision_layer = 8
-collision_mask = 2
+collision_mask = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=789917542]
 scale = Vector2(1.5375257, 1.5375257)
@@ -26,5 +29,13 @@ sprite_frames = SubResource("SpriteFrames_6xxrv")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=796471252]
+position = Vector2(0, 51)
 scale = Vector2(2.336379, -2.057872)
 shape = SubResource("RectangleShape2D_skx2t")
+
+[node name="HurtZone" type="Area2D" parent="." unique_id=136833656]
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtZone" unique_id=641380568]
+shape = SubResource("RectangleShape2D_0bnu1")
