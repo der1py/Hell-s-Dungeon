@@ -1,21 +1,29 @@
 [gd_scene format=3 uid="uid://b44pseb5wfn1q"]
 
 [ext_resource type="Script" uid="uid://ckjjwd1y5at18" path="res://enemy.gd" id="1_uaaco"]
-[ext_resource type="Texture2D" uid="uid://boucnw6hf1s8b" path="res://Assets/Dead Rat/mouse_dead.png" id="2_a8xgm"]
+[ext_resource type="Texture2D" uid="uid://ll7uok5q6fqh" path="res://Assets/Enemies/Skeleton/skele attack 1.png" id="2_xetf2"]
 [ext_resource type="Texture2D" uid="uid://dec818adef8d" path="res://Assets/Enemies/Skeleton/skeleton_idle.png" id="2_ymvsc"]
-[ext_resource type="Texture2D" uid="uid://0wikbtis3ci8" path="res://Assets/Enemies/Slime/slime_dead.png" id="3_rwpf0"]
+[ext_resource type="Texture2D" uid="uid://csjge0f4sjau7" path="res://Assets/Enemies/Skeleton/skele attack 2.png" id="3_bwpjj"]
 [ext_resource type="Texture2D" uid="uid://tpa6qrwn6hhi" path="res://Assets/Enemies/Slime/slime_hit.png" id="4_ew5mc"]
+[ext_resource type="Texture2D" uid="uid://dl23ddkc45fem" path="res://Assets/Enemies/Skeleton/skele attack 3.png" id="4_y671r"]
 [ext_resource type="Texture2D" uid="uid://df7wd8xysik2y" path="res://Assets/Enemies/Slime/slime_squashed.png" id="5_vqc8v"]
+[ext_resource type="Texture2D" uid="uid://dsxbec8pn0lgp" path="res://Assets/Enemies/Skeleton/skele die.png" id="6_cyl7o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mf88q"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_a8xgm")
+"texture": ExtResource("2_xetf2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bwpjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y671r")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -27,7 +35,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_rwpf0")
+"texture": ExtResource("6_cyl7o")
 }],
 "loop": true,
 "name": &"die",
@@ -65,8 +73,7 @@ script = ExtResource("1_uaaco")
 position = Vector2(1.5219731, -1.3919923)
 scale = Vector2(0.97912097, 1.0966152)
 sprite_frames = SubResource("SpriteFrames_mf88q")
-animation = &"crawl"
-autoplay = "crawl"
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2062700937]
 position = Vector2(-4, 28)
