@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b44pseb5wfn1q" path="res://enemies/skeleton.tscn" id="27_jwqqg"]
 [ext_resource type="PackedScene" uid="uid://dpm02hsadsnhh" path="res://enemies/sniper.tscn" id="28_seli0"]
 [ext_resource type="PackedScene" uid="uid://dbfxiv3kw7kax" path="res://boss.tscn" id="29_seli0"]
-[ext_resource type="PackedScene" uid="uid://bmqto0kl4rwv3" path="res://heal_pot.tscn" id="30_4iiuy"]
+[ext_resource type="PackedScene" path="res://heal_pot.tscn" id="30_4iiuy"]
 [ext_resource type="Texture2D" uid="uid://ebt8sdjel6i6" path="res://Assets/Metal/slice01_01.png" id="30_tp5fj"]
 [ext_resource type="Script" uid="uid://b5lss4bjxb0tp" path="res://boss.gd" id="30_y0o6k"]
 [ext_resource type="Texture2D" uid="uid://bqg1d0jqpofde" path="res://Assets/Metal/slice02_02.png" id="31_yb8rv"]

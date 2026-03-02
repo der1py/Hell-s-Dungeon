@@ -58,7 +58,6 @@ func _physics_process(delta):
 				speed = dash_power
 				await get_tree().create_timer(dash_time).timeout
 
-				print("Dash done")
 				speed = default_speed
 				is_dashing = false
 				$DashTimer.start()
@@ -73,15 +72,11 @@ func _physics_process(delta):
 	#actually move the object
 	move_and_slide()
 
-	print($HurtZone.has_overlapping_bodies())
-	print($HurtZone.has_overlapping_areas())
-
 func _on_DashTimer_timeout():
 	can_dash = true
 
 func _deal_damage(body):	
 	if body.is_in_group("player"):
-		print("asd")
 		body.take_damage(damage)
 
 func die():
