@@ -5,13 +5,23 @@ var jumpForce = 1100
 var timer = 10 # wtf does ts do delet later??
 var can_dash = true
 var dash_power = 1500
-var dash_cooldown = 0 # seconds
+
+var dash_cooldown = 2 # seconds
+var dash_cooldown_init = 2 # seconds
+var dash_cooldown_timer = 0.0
+
 var hp = 100
 var maxJumps = 2
 var jumps = maxJumps
 var can_melee = true
-var melee_cooldown = 0.3
-var rmb_cooldown = 0.1
+var melee_cooldown = 0.2
+var melee_cooldown_init = 0.2 # seconds
+var melee_cooldown_timer = 0.0
+var rmb_cooldown_timer = 0.0
+
+var rmb_cooldown = 3
+var rmb_cooldown_init = 3
+
 var can_rmb = true
 enum STATES { IDLE, DASHING, AIR, WALK, ATTACK1, ATTACK2, DEAD }
 var state = STATES.IDLE
@@ -36,13 +46,22 @@ var weaponDamage = [10, 15]
 func _ready():
 	add_to_group("player")
 	print("Hello World")
-	#health_bar.value = hp
+	dash_cooldown_init = dash_cooldown
 
 
 func _physics_process(delta):
 	# die
 	if hp <= 0:
 		die()
+		
+	if dash_cooldown_timer > 0:
+		dash_cooldown_timer -= delta
+		
+	if melee_cooldown_timer > 0:
+		melee_cooldown_timer -= delta
+
+	if rmb_cooldown_timer > 0:
+		rmb_cooldown_timer -= delta
 
 	# freeze all this shi when u dash lol
 	if state != STATES.DASHING:
@@ -53,15 +72,19 @@ func _physics_process(delta):
 		handle_x_movement(delta)
 	
 	if Input.is_action_just_pressed("dash"):
-		if not can_dash:
+		if dash_cooldown_timer > 0:
 			pass
 		else:
 			can_dash = false
+			dash_cooldown_timer = dash_cooldown  # start cooldown
+			
 			velocity.x = dash_power * (1 if $Sprites.flip_h == false else -1)
 			state = STATES.DASHING
+			
 			await get_tree().create_timer(dash_time).timeout
 			velocity.x = 0
 			state = STATES.IDLE
+			
 			await get_tree().create_timer(max(dash_cooldown - dash_time, 0)).timeout
 			can_dash = true
 	
@@ -122,40 +145,36 @@ func handle_attack_input():
 
 	# melee attack
 	if Input.is_action_pressed("lmb"):
-		if not can_melee:
+		if melee_cooldown_timer > 0:
 			pass
 		else:
+			melee_cooldown_timer = melee_cooldown
+			
 			var mouse_pos = get_global_mouse_position()
 			if mouse_pos.x > global_position.x:
-				$Sprites.flip_h = false   # facing right
+				$Sprites.flip_h = false
 			else:
-				$Sprites.flip_h = true    # facing left
-			can_melee = false
+				$Sprites.flip_h = true
+
 			velocity.x += 400 * (1 if $Sprites.flip_h == false else -1)
 			melee_attack()
 
 			state = STATES.ATTACK1
 			await get_tree().create_timer(default_time).timeout
 			state = STATES.IDLE
-
-			await get_tree().create_timer(max(melee_cooldown - default_time, 0)).timeout
-			can_melee = true
 	
 	# boomerang attack
 	if Input.is_action_pressed("rmb"):
-		if not can_rmb:
+		if rmb_cooldown_timer > 0:
 			pass
 		else:
-			can_rmb = false
-			can_melee = false
+			rmb_cooldown_timer = rmb_cooldown
+			
 			boomerang_attack()
 
 			state = STATES.ATTACK2
 			await get_tree().create_timer(default_time).timeout
 			state = STATES.IDLE
-
-			await get_tree().create_timer(max(rmb_cooldown - default_time, 0)).timeout
-			can_rmb = true
 
 func animate():
 	if state == STATES.DEAD:

@@ -503,8 +503,7 @@ offset_bottom = 181.13481
 rotation = -1.5715618
 theme_override_styles/background = SubResource("StyleBoxFlat_jwqqg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_cw201")
-max_value = 3.0
-value = 3.0
+value = 80.0
 show_percentage = false
 
 [node name="atkbar" type="ProgressBar" parent="HUD" unique_id=503017878]
@@ -515,8 +514,7 @@ offset_bottom = 183.44276
 rotation = -1.5715618
 theme_override_styles/background = SubResource("StyleBoxFlat_jwqqg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_cw201")
-max_value = 0.2
-value = 0.2
+value = 80.0
 show_percentage = false
 
 [node name="TextureRect" type="TextureRect" parent="HUD" unique_id=2144014832]
@@ -641,10 +639,10 @@ scale = Vector2(0.155, 0.155)
 texture = ExtResource("33_373qg")
 
 [node name="mist" type="TextureRect" parent="." unique_id=142218201]
-offset_left = -849.0
-offset_top = -1674.0
-offset_right = 5863.0
-offset_bottom = 3023.0
+offset_left = 224.0
+offset_top = -1576.0
+offset_right = 6237.0
+offset_bottom = 3121.0
 texture = ExtResource("34_1sxb4")
 
 [node name="hellbg" type="TextureRect" parent="." unique_id=903598241]
