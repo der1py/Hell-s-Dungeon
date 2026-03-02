@@ -15,7 +15,15 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Hell's Dungeon"
+<<<<<<< HEAD
+run/main_scene="uid://cqfy1ulg1gmb5"
+=======
+<<<<<<< HEAD
+run/main_scene="uid://cqfy1ulg1gmb5"
+=======
 run/main_scene="uid://bpty1y2d6f8q3"
+>>>>>>> c1db389656006048fd0c6249d1b8eebb0d4cd589
+>>>>>>> d5ee3455e9c605eda04849ad9cfe9ee1e899b17b
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
