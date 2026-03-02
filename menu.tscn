@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://bpty1y2d6f8q3"]
+
+[ext_resource type="Script" uid="uid://bds62iwdnji8h" path="res://menu.gd" id="1_mae5d"]
+[ext_resource type="FontFile" uid="uid://d0e5jl2vay1kx" path="res://Assets/PTSerif-Regular.ttf" id="2_4hy44"]
+[ext_resource type="FontFile" uid="uid://clbet8ndwcpgt" path="res://Assets/Silkscreen-Regular.ttf" id="3_ytr4m"]
+
+[node name="Menu" type="Control" unique_id=1935124223]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mae5d")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1808326518]
+layout_mode = 0
+offset_left = -43.0
+offset_top = -34.0
+offset_right = 1207.0
+offset_bottom = 693.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=639104691]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 32.0
+offset_right = 1043.0
+offset_bottom = 238.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_4hy44")
+theme_override_font_sizes/font_size = 100
+text = "Hell's Dungeon"
+
+[node name="Label" type="Label" parent="Label" unique_id=436032450]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 130.0
+offset_right = 859.0
+offset_bottom = 355.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_4hy44")
+theme_override_font_sizes/font_size = 40
+text = "left click - attack
+right click - throw sword
+WAD - move and jump
+S or space - dash"
+
+[node name="Button" type="Button" parent="." unique_id=1905031656]
+layout_mode = 0
+offset_left = 396.0
+offset_top = 447.0
+offset_right = 790.0
+offset_bottom = 501.0
+theme_override_colors/font_color = Color(0, 0.9791575, 0.61266917, 1)
+theme_override_colors/font_hover_color = Color(0.662745, 1, 0.635294, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_ytr4m")
+theme_override_font_sizes/font_size = 35
+text = "enter hades' lair"
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
