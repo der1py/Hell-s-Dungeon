@@ -14,6 +14,7 @@ var rng
 
 func _ready():
 	super._ready()
+	$HurtZone.connect("body_entered", _deal_damage)
 
 	rng = RandomNumberGenerator.new()
 	
@@ -74,14 +75,14 @@ func _physics_process(delta):
 
 	print($HurtZone.has_overlapping_bodies())
 	print($HurtZone.has_overlapping_areas())
-	$HurtZone.connect("body_entered", _deal_damage)
-
-
-
-
 
 func _on_DashTimer_timeout():
 	can_dash = true
 
-func _deal_damage():	
-	print("asd")	
+func _deal_damage(body):	
+	if body.is_in_group("player"):
+		print("asd")
+		body.take_damage(damage)
+
+func die():
+	get_tree().change_scene_to_file("res://win_screen.tscn")
