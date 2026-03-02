@@ -8,6 +8,13 @@ func _ready():
 	$Knook/Camera2D.limit_top = -500   # example value
 	$Bumper.visible = false
 	$Knook/Camera2D.offset.y = -150
+	var music = AudioStreamPlayer.new()
+	music.volume_db = -5
+	music.stream = preload("res://music.mp3")
+	add_child(music)
+	music.finished.connect(func(): music.play())
+	music.play()
+	print("Level ready")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
