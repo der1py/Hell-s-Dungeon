@@ -11,7 +11,7 @@ var weapon: Node2D
 
 var can_melee = true
 var melee_cooldown = 0.5
-var attack_range = 40
+var attack_range = 50
 var has_melee = true # has melee means it can melee, can melee is like state or wtv
 
 var default_time = 0.2 # default action time
