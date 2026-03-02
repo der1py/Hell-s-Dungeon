@@ -3,6 +3,7 @@ extends Area2D
 
 var speed := 900
 var direction: Vector2
+var damage = 10
 
 func _ready():
 	body_entered.connect(_on_hurt_zone_body_entered)
@@ -15,5 +16,5 @@ func _physics_process(delta):
 	# 	queue_free() # ?
 
 func _on_hurt_zone_body_entered(body):
-	if body.is_in_group("player"):
-		body.hp -= 10
+	if body.is_in_group("player") and body.has_method("take_damage"):
+		body.take_damage(damage)

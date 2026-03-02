@@ -42,15 +42,12 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o72j3"]
-size = Vector2(40, 2)
+size = Vector2(31, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pbdpi"]
-size = Vector2(48, 23)
+size = Vector2(31, 52)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6oqi"]
-size = Vector2(35, 8)
-
-[node name="Enemy" type="CharacterBody2D" unique_id=1854339126]
+[node name="Skeleton" type="CharacterBody2D" unique_id=1854339126]
 collision_layer = 8
 collision_mask = 67
 script = ExtResource("1_uaaco")
@@ -61,21 +58,17 @@ animation = &"crawl"
 autoplay = "crawl"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2062700937]
-position = Vector2(0, 16)
+position = Vector2(-4, 28)
 shape = SubResource("RectangleShape2D_o72j3")
 
 [node name="HurtZone" type="Area2D" parent="." unique_id=1412566572]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtZone" unique_id=1394744345]
-position = Vector2(0, 2.5)
+position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_pbdpi")
 
 [node name="TopZone" type="Area2D" parent="." unique_id=502278582]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TopZone" unique_id=1266351827]
-position = Vector2(-0.5, -14)
-shape = SubResource("RectangleShape2D_x6oqi")
 
 [connection signal="body_entered" from="HurtZone" to="." method="_on_hurt_zone_body_entered"]
 [connection signal="body_entered" from="TopZone" to="." method="_on_top_zone_body_entered"]
